@@ -220,3 +220,4 @@
 /home/cohorte6/Desktop/AssesmentReservas/AssesmentReservas.API/bin/Debug/net10.0/x64/tesseract50.dll
 /home/cohorte6/Desktop/AssesmentReservas/AssesmentReservas.API/bin/Debug/net10.0/Microsoft.Extensions.Caching.StackExchangeRedis.dll
 /home/cohorte6/Desktop/AssesmentReservas/AssesmentReservas.API/bin/Debug/net10.0/Tesseract.dll
+/home/cohorte6/Desktop/AssesmentReservas/AssesmentReservas.API/obj/Debug/net10.0/AssesmentReservas.API.sourcelink.json

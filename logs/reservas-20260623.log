@@ -757,3 +757,188 @@ LIMIT @p1 OFFSET @p
 2026-06-23 19:04:04.665 -05:00 [INF] HTTP GET /Catalog responded 200 in 3.7573 ms
 2026-06-23 19:04:04.665 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5152/Catalog - 200 null text/html; charset=utf-8 4.0521ms
 2026-06-23 19:07:45.019 -05:00 [INF] Application is shutting down...
+2026-06-23 19:48:43.898 -05:00 [INF] Executed DbCommand (15ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+2026-06-23 19:48:44.102 -05:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2026-06-23 19:48:44.148 -05:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE IF NOT EXISTS "__EFMigrationsHistory" (
+    "MigrationId" character varying(150) NOT NULL,
+    "ProductVersion" character varying(32) NOT NULL,
+    CONSTRAINT "PK___EFMigrationsHistory" PRIMARY KEY ("MigrationId")
+);
+2026-06-23 19:48:44.160 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+LOCK TABLE "__EFMigrationsHistory" IN ACCESS EXCLUSIVE MODE
+2026-06-23 19:48:44.162 -05:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+2026-06-23 19:48:44.167 -05:00 [INF] No migrations were applied. The database is already up to date.
+2026-06-23 19:48:44.383 -05:00 [INF] Executed DbCommand (7ms) [Parameters=[@normalizedName='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @normalizedName
+LIMIT 1
+2026-06-23 19:48:44.422 -05:00 [INF] Executed DbCommand (1ms) [Parameters=[@normalizedName='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @normalizedName
+LIMIT 1
+2026-06-23 19:48:44.495 -05:00 [INF] User profile is available. Using '/home/cohorte6/.aspnet/DataProtection-Keys' as key repository; keys will not be encrypted at rest.
+2026-06-23 19:48:44.540 -05:00 [INF] Now listening on: http://localhost:5152
+2026-06-23 19:48:44.542 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-06-23 19:48:44.542 -05:00 [INF] Hosting environment: Development
+2026-06-23 19:48:44.542 -05:00 [INF] Content root path: /home/cohorte6/Desktop/AssesmentReservas/AssesmentReservas.API
+2026-06-23 19:48:44.599 -05:00 [INF] Executed DbCommand (3ms) [Parameters=[@today='?' (DbType = Date), @checkInWindow='?' (DbType = Date)], CommandType='"Text"', CommandTimeout='30']
+SELECT b."Id", b."CancelledAt", b."CheckInDate", b."CheckInReminderSentAt", b."CheckOutDate", b."CheckOutReminderSentAt", b."ConfirmedAt", b."CreatedAt", b."GuestId", b."PricePerNight", b."PropertyId", b."Status", b."TotalPrice", p."Id", p."AddressLine", p."Bathrooms", p."Bedrooms", p."City", p."Country", p."CreatedAt", p."Description", p."IsActive", p."Latitude", p."Longitude", p."MaxGuests", p."OwnerId", p."PricePerNight", p."Title", p."UpdatedAt"
+FROM "Bookings" AS b
+INNER JOIN "Properties" AS p ON b."PropertyId" = p."Id"
+WHERE b."Status" = 1 AND b."CheckInReminderSentAt" IS NULL AND b."CheckInDate" >= @today AND b."CheckInDate" <= @checkInWindow
+2026-06-23 19:48:44.608 -05:00 [INF] Executed DbCommand (1ms) [Parameters=[@today='?' (DbType = Date)], CommandType='"Text"', CommandTimeout='30']
+SELECT b."Id", b."CancelledAt", b."CheckInDate", b."CheckInReminderSentAt", b."CheckOutDate", b."CheckOutReminderSentAt", b."ConfirmedAt", b."CreatedAt", b."GuestId", b."PricePerNight", b."PropertyId", b."Status", b."TotalPrice", p."Id", p."AddressLine", p."Bathrooms", p."Bedrooms", p."City", p."Country", p."CreatedAt", p."Description", p."IsActive", p."Latitude", p."Longitude", p."MaxGuests", p."OwnerId", p."PricePerNight", p."Title", p."UpdatedAt"
+FROM "Bookings" AS b
+INNER JOIN "Properties" AS p ON b."PropertyId" = p."Id"
+WHERE b."Status" = 1 AND b."CheckOutReminderSentAt" IS NULL AND b."CheckOutDate" = @today
+2026-06-23 19:48:44.613 -05:00 [INF] Executed DbCommand (1ms) [Parameters=[@today='?' (DbType = Date)], CommandType='"Text"', CommandTimeout='30']
+SELECT b."Id", b."CancelledAt", b."CheckInDate", b."CheckInReminderSentAt", b."CheckOutDate", b."CheckOutReminderSentAt", b."ConfirmedAt", b."CreatedAt", b."GuestId", b."PricePerNight", b."PropertyId", b."Status", b."TotalPrice"
+FROM "Bookings" AS b
+WHERE b."Status" = 1 AND b."CheckOutDate" < @today
+2026-06-23 20:07:57.578 -05:00 [INF] Now listening on: http://localhost:5152
+2026-06-23 20:07:57.621 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-06-23 20:07:57.621 -05:00 [INF] Hosting environment: Development
+2026-06-23 20:07:57.622 -05:00 [INF] Content root path: /home/cohorte6/Desktop/AssesmentReservas/AssesmentReservas.API
+2026-06-23 20:08:01.192 -05:00 [WRN] Failed to determine the https port for redirect.
+2026-06-23 20:08:01.548 -05:00 [INF] HTTP GET / responded 200 in 357.8660 ms
+2026-06-23 20:08:07.996 -05:00 [INF] HTTP GET /Account/Profile responded 200 in 45.7173 ms
+2026-06-23 20:08:09.697 -05:00 [INF] HTTP POST /Account/Logout responded 302 in 28.5621 ms
+2026-06-23 20:08:09.703 -05:00 [INF] HTTP GET / responded 200 in 4.2584 ms
+2026-06-23 20:08:11.230 -05:00 [INF] HTTP GET /Account/Login responded 200 in 34.1712 ms
+2026-06-23 20:08:11.246 -05:00 [INF] HTTP GET /lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js responded 200 in 7.2829 ms
+2026-06-23 20:08:11.246 -05:00 [INF] HTTP GET /lib/jquery-validation/dist/jquery.validate.min.js responded 200 in 7.8096 ms
+2026-06-23 20:08:12.682 -05:00 [INF] HTTP GET /Account/Register responded 200 in 22.0057 ms
+2026-06-23 20:08:12.693 -05:00 [INF] HTTP GET /lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js responded 200 in 4.7901 ms
+2026-06-23 20:08:12.695 -05:00 [INF] HTTP GET /lib/jquery-validation/dist/jquery.validate.min.js responded 200 in 6.5281 ms
+2026-06-23 20:08:58.310 -05:00 [INF] Usuario carlosgarcia@gmail.com registrado con rol Owner
+2026-06-23 20:08:58.312 -05:00 [INF] HTTP POST /Account/Register responded 302 in 220.5358 ms
+2026-06-23 20:08:58.318 -05:00 [INF] HTTP GET / responded 200 in 4.5072 ms
+2026-06-23 20:09:15.135 -05:00 [INF] HTTP GET /Owner responded 200 in 91.0530 ms
+2026-06-23 20:09:24.267 -05:00 [INF] HTTP GET /Owner/Create responded 200 in 31.4897 ms
+2026-06-23 20:09:24.278 -05:00 [INF] HTTP GET /lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js responded 200 in 0.5632 ms
+2026-06-23 20:09:24.278 -05:00 [INF] HTTP GET /lib/jquery-validation/dist/jquery.validate.min.js responded 200 in 0.8257 ms
+2026-06-23 20:10:07.409 -05:00 [INF] Inmueble 4 creado por ef7e5c2e-778a-442b-91b1-2d48b9941bc9
+2026-06-23 20:10:07.413 -05:00 [INF] HTTP POST /Owner/Create responded 302 in 99.0348 ms
+2026-06-23 20:10:07.584 -05:00 [INF] HTTP GET /Owner/Manage/4 responded 200 in 169.6176 ms
+2026-06-23 20:10:18.906 -05:00 [INF] Objeto subido a properties/2026/06/09ae562f31fb4bc69ecb47946357d76c.png
+2026-06-23 20:10:18.927 -05:00 [INF] HTTP POST /Owner/UploadImage/4 responded 302 in 251.0568 ms
+2026-06-23 20:10:18.935 -05:00 [INF] HTTP GET /Owner/Manage/4 responded 200 in 6.8378 ms
+2026-06-23 20:10:26.542 -05:00 [INF] HTTP GET /Owner/Properties responded 200 in 19.3280 ms
+2026-06-23 20:10:27.609 -05:00 [INF] HTTP GET /Owner/Manage/4 responded 200 in 6.0364 ms
+2026-06-23 20:10:29.294 -05:00 [INF] HTTP GET /Owner/Properties responded 200 in 3.0747 ms
+2026-06-23 20:10:34.660 -05:00 [INF] HTTP GET /Owner/Create responded 200 in 2.1708 ms
+2026-06-23 20:10:34.672 -05:00 [INF] HTTP GET /lib/jquery-validation/dist/jquery.validate.min.js responded 200 in 1.0548 ms
+2026-06-23 20:10:34.672 -05:00 [INF] HTTP GET /lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js responded 200 in 1.0595 ms
+2026-06-23 20:10:38.718 -05:00 [INF] HTTP GET /Account/Profile responded 200 in 3.5625 ms
+2026-06-23 20:10:40.217 -05:00 [INF] HTTP GET /Bookings responded 200 in 21.7441 ms
+2026-06-23 20:10:43.814 -05:00 [INF] HTTP GET /Account/Profile responded 200 in 3.8964 ms
+2026-06-23 20:10:54.308 -05:00 [INF] HTTP POST /Account/Logout responded 302 in 0.7920 ms
+2026-06-23 20:10:54.312 -05:00 [INF] HTTP GET / responded 200 in 2.7102 ms
+2026-06-23 20:10:55.700 -05:00 [INF] HTTP GET /Account/Login responded 200 in 2.1957 ms
+2026-06-23 20:10:55.708 -05:00 [INF] HTTP GET /lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js responded 200 in 0.5041 ms
+2026-06-23 20:10:55.708 -05:00 [INF] HTTP GET /lib/jquery-validation/dist/jquery.validate.min.js responded 200 in 0.6551 ms
+2026-06-23 20:11:04.708 -05:00 [INF] HTTP GET /Account/Register responded 200 in 1.7077 ms
+2026-06-23 20:11:04.719 -05:00 [INF] HTTP GET /lib/jquery-validation/dist/jquery.validate.min.js responded 200 in 0.5597 ms
+2026-06-23 20:11:04.720 -05:00 [INF] HTTP GET /lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js responded 200 in 0.3768 ms
+2026-06-23 20:11:23.846 -05:00 [INF] Usuario yonathan.yp20@gmail.com registrado con rol Guest
+2026-06-23 20:11:23.847 -05:00 [INF] HTTP POST /Account/Register responded 302 in 74.0221 ms
+2026-06-23 20:11:23.850 -05:00 [INF] HTTP GET / responded 200 in 1.9818 ms
+2026-06-23 20:11:26.404 -05:00 [INF] HTTP GET /Catalog/Details/4 responded 200 in 50.2355 ms
+2026-06-23 20:11:31.747 -05:00 [INF] HTTP GET /Bookings/Create responded 200 in 24.4956 ms
+2026-06-23 20:11:31.764 -05:00 [INF] HTTP GET /lib/jquery-validation/dist/jquery.validate.min.js responded 200 in 0.7018 ms
+2026-06-23 20:11:31.767 -05:00 [INF] HTTP GET /lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js responded 200 in 0.6556 ms
+2026-06-23 20:11:33.348 -05:00 [INF] HTTP GET /Kyc responded 200 in 26.2956 ms
+2026-06-23 20:11:33.357 -05:00 [INF] HTTP GET /lib/jquery-validation/dist/jquery.validate.min.js responded 200 in 0.6319 ms
+2026-06-23 20:11:33.357 -05:00 [INF] HTTP GET /lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js responded 200 in 0.4700 ms
+2026-06-23 20:11:37.371 -05:00 [INF] Objeto subido a kyc-documents/2026/06/a21b5ba84db4450faf4b2f18d50404b9.enc
+2026-06-23 20:11:37.393 -05:00 [ERR] Falló el OCR de Tesseract (TessData: /usr/share/tesseract-ocr/5/tessdata, Langs: spa+eng)
+System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation.
+ ---> System.DllNotFoundException: Failed to find library "libleptonica-1.82.0.so" for platform x64.
+   at InteropDotNet.LibraryLoader.LoadLibrary(String fileName, String platformName)
+   at InteropRuntimeImplementer.LeptonicaApiSignaturesInstance.LeptonicaApiSignaturesImplementation..ctor(LibraryLoader loader)
+   at System.RuntimeMethodHandle.InvokeMethod(ObjectHandleOnStack target, Void** arguments, ObjectHandleOnStack sig, BOOL isConstructor, ObjectHandleOnStack result)
+   at System.RuntimeMethodHandle.InvokeMethod(ObjectHandleOnStack target, Void** arguments, ObjectHandleOnStack sig, BOOL isConstructor, ObjectHandleOnStack result)
+   at System.Reflection.MethodBaseInvoker.InterpretedInvoke_Constructor(Object obj, IntPtr* args)
+   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)
+   --- End of inner exception stack trace ---
+   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)
+   at System.Reflection.RuntimeConstructorInfo.Invoke(BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at System.RuntimeType.CreateInstanceImpl(BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture)
+   at InteropDotNet.InteropRuntimeImplementer.CreateInstance[T]()
+   at Tesseract.Interop.LeptonicaApi.Initialize()
+   at Tesseract.Interop.TessApi.Initialize()
+   at Tesseract.Interop.TessApi.get_Native()
+   at Tesseract.TesseractEngine..ctor(String datapath, String language, EngineMode engineMode, IEnumerable`1 configFiles, IDictionary`2 initialOptions, Boolean setOnlyNonDebugVariables)
+   at Tesseract.TesseractEngine..ctor(String datapath, String language, EngineMode engineMode)
+   at AssesmentReservas.API.Services.Infrastructure.TesseractOcrService.ExtractText(Byte[] imageBytes) in /home/cohorte6/Desktop/AssesmentReservas/AssesmentReservas.API/Services/Infrastructure/TesseractOcrService.cs:line 25
+2026-06-23 20:11:37.539 -05:00 [INF] Correo enviado a yonathan.yp20@gmail.com: Validación de identidad rechazada
+2026-06-23 20:11:37.540 -05:00 [INF] KYC de 095c9c80-a7e3-4586-a4f9-3978414403d6 -> "Rejected"
+2026-06-23 20:11:37.544 -05:00 [INF] HTTP POST /Kyc/Upload responded 200 in 196.2629 ms
+2026-06-23 20:11:37.553 -05:00 [INF] HTTP GET /lib/jquery-validation/dist/jquery.validate.min.js responded 200 in 0.7881 ms
+2026-06-23 20:11:37.554 -05:00 [INF] HTTP GET /lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js responded 200 in 0.4742 ms
+2026-06-23 20:12:23.915 -05:00 [INF] Objeto subido a kyc-documents/2026/06/c48ccd7553d543e8ab5c5c9d9c9b51d5.enc
+2026-06-23 20:12:23.927 -05:00 [ERR] Falló el OCR de Tesseract (TessData: /usr/share/tesseract-ocr/5/tessdata, Langs: spa+eng)
+System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation.
+ ---> System.DllNotFoundException: Failed to find library "libleptonica-1.82.0.so" for platform x64.
+   at InteropDotNet.LibraryLoader.LoadLibrary(String fileName, String platformName)
+   at InteropRuntimeImplementer.LeptonicaApiSignaturesInstance.LeptonicaApiSignaturesImplementation..ctor(LibraryLoader loader)
+   at System.RuntimeMethodHandle.InvokeMethod(ObjectHandleOnStack target, Void** arguments, ObjectHandleOnStack sig, BOOL isConstructor, ObjectHandleOnStack result)
+   at System.RuntimeMethodHandle.InvokeMethod(ObjectHandleOnStack target, Void** arguments, ObjectHandleOnStack sig, BOOL isConstructor, ObjectHandleOnStack result)
+   at System.Reflection.MethodBaseInvoker.InterpretedInvoke_Constructor(Object obj, IntPtr* args)
+   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)
+   --- End of inner exception stack trace ---
+   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)
+   at System.Reflection.RuntimeConstructorInfo.Invoke(BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at System.RuntimeType.CreateInstanceImpl(BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture)
+   at InteropDotNet.InteropRuntimeImplementer.CreateInstance[T]()
+   at Tesseract.Interop.LeptonicaApi.Initialize()
+   at Tesseract.Interop.TessApi.Initialize()
+   at Tesseract.Interop.TessApi.get_Native()
+   at Tesseract.TesseractEngine..ctor(String datapath, String language, EngineMode engineMode, IEnumerable`1 configFiles, IDictionary`2 initialOptions, Boolean setOnlyNonDebugVariables)
+   at Tesseract.TesseractEngine..ctor(String datapath, String language, EngineMode engineMode)
+   at AssesmentReservas.API.Services.Infrastructure.TesseractOcrService.ExtractText(Byte[] imageBytes) in /home/cohorte6/Desktop/AssesmentReservas/AssesmentReservas.API/Services/Infrastructure/TesseractOcrService.cs:line 25
+2026-06-23 20:12:23.937 -05:00 [INF] Correo enviado a yonathan.yp20@gmail.com: Validación de identidad rechazada
+2026-06-23 20:12:23.938 -05:00 [INF] KYC de 095c9c80-a7e3-4586-a4f9-3978414403d6 -> "Rejected"
+2026-06-23 20:12:23.940 -05:00 [INF] HTTP POST /Kyc/Upload responded 200 in 32.5491 ms
+2026-06-23 20:12:23.952 -05:00 [INF] HTTP GET /lib/jquery-validation/dist/jquery.validate.min.js responded 200 in 0.5649 ms
+2026-06-23 20:12:23.952 -05:00 [INF] HTTP GET /lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js responded 200 in 0.3885 ms
+2026-06-23 20:12:30.966 -05:00 [INF] Objeto subido a kyc-documents/2026/06/ce304e1aede74675857ac96dc9129ed9.enc
+2026-06-23 20:12:30.978 -05:00 [ERR] Falló el OCR de Tesseract (TessData: /usr/share/tesseract-ocr/5/tessdata, Langs: spa+eng)
+System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation.
+ ---> System.DllNotFoundException: Failed to find library "libleptonica-1.82.0.so" for platform x64.
+   at InteropDotNet.LibraryLoader.LoadLibrary(String fileName, String platformName)
+   at InteropRuntimeImplementer.LeptonicaApiSignaturesInstance.LeptonicaApiSignaturesImplementation..ctor(LibraryLoader loader)
+   at System.RuntimeMethodHandle.InvokeMethod(ObjectHandleOnStack target, Void** arguments, ObjectHandleOnStack sig, BOOL isConstructor, ObjectHandleOnStack result)
+   at System.RuntimeMethodHandle.InvokeMethod(ObjectHandleOnStack target, Void** arguments, ObjectHandleOnStack sig, BOOL isConstructor, ObjectHandleOnStack result)
+   at System.Reflection.MethodBaseInvoker.InterpretedInvoke_Constructor(Object obj, IntPtr* args)
+   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)
+   --- End of inner exception stack trace ---
+   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)
+   at System.Reflection.RuntimeConstructorInfo.Invoke(BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at System.RuntimeType.CreateInstanceImpl(BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture)
+   at InteropDotNet.InteropRuntimeImplementer.CreateInstance[T]()
+   at Tesseract.Interop.LeptonicaApi.Initialize()
+   at Tesseract.Interop.TessApi.Initialize()
+   at Tesseract.Interop.TessApi.get_Native()
+   at Tesseract.TesseractEngine..ctor(String datapath, String language, EngineMode engineMode, IEnumerable`1 configFiles, IDictionary`2 initialOptions, Boolean setOnlyNonDebugVariables)
+   at Tesseract.TesseractEngine..ctor(String datapath, String language, EngineMode engineMode)
+   at AssesmentReservas.API.Services.Infrastructure.TesseractOcrService.ExtractText(Byte[] imageBytes) in /home/cohorte6/Desktop/AssesmentReservas/AssesmentReservas.API/Services/Infrastructure/TesseractOcrService.cs:line 25
+2026-06-23 20:12:30.988 -05:00 [INF] Correo enviado a yonathan.yp20@gmail.com: Validación de identidad rechazada
+2026-06-23 20:12:30.988 -05:00 [INF] KYC de 095c9c80-a7e3-4586-a4f9-3978414403d6 -> "Rejected"
+2026-06-23 20:12:30.990 -05:00 [INF] HTTP POST /Kyc/Upload responded 200 in 29.8743 ms
+2026-06-23 20:12:31.002 -05:00 [INF] HTTP GET /lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js responded 200 in 0.6116 ms
+2026-06-23 20:12:31.002 -05:00 [INF] HTTP GET /lib/jquery-validation/dist/jquery.validate.min.js responded 200 in 0.6457 ms
+2026-06-23 20:12:54.589 -05:00 [INF] HTTP GET /Account/Profile responded 200 in 3.3809 ms
+2026-06-23 20:12:55.555 -05:00 [INF] HTTP POST /Account/Logout responded 302 in 0.8320 ms
+2026-06-23 20:12:55.559 -05:00 [INF] HTTP GET / responded 200 in 2.4206 ms
+2026-06-23 20:12:58.296 -05:00 [INF] Application is shutting down...
