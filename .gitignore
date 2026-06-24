@@ -1,0 +1,27 @@
+## .NET
+**/bin/
+**/obj/
+**/out/
+*.user
+
+## Logs
+**/logs/
+*.log
+
+## IDE
+.vs/
+.idea/
+.vscode/
+.claude/
+
+## OS
+.DS_Store
+Thumbs.db
+
+## Node / Laravel (complementos)
+node_modules/
+vendor/
+
+## Secrets locales
+**/appsettings.*.Local.json
+.env
