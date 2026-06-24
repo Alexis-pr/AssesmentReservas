@@ -1,0 +1,109 @@
+@model IReadOnlyList<PropertyListItemDto>
+@{
+    ViewData["Title"] = "Inicio";
+}
+
+<!-- Hero -->
+<section class="relative w-full h-[420px] overflow-hidden">
+    <div class="absolute inset-0 z-0 bg-primary">
+        <div class="absolute inset-0 bg-gradient-to-b from-black/30 via-primary/40 to-background/95"></div>
+    </div>
+    <div class="relative z-10 h-full flex flex-col justify-end p-margin-mobile pb-16 max-w-container-max mx-auto">
+        <h1 class="font-display text-headline-lg-mobile text-white drop-shadow-lg mb-2">Encuentra tu próximo refugio</h1>
+        <p class="text-white/90 font-body-md max-w-md">Estancias premium verificadas con IA para tu total tranquilidad.</p>
+    </div>
+</section>
+
+<!-- Search Bar -->
+<section class="px-margin-mobile -mt-10 relative z-20 max-w-container-max mx-auto">
+    <form method="get" action="/Catalog" class="bg-surface-container-lowest p-6 rounded-xl shadow-lg border border-outline-variant space-y-4">
+        <div>
+            <label class="block font-label-md text-primary mb-1 ml-1">UBICACIÓN</label>
+            <div class="flex items-center bg-surface-container rounded-lg px-3 py-3 focus-within:ring-2 ring-secondary">
+                <span class="material-symbols-outlined text-on-surface-variant mr-2">location_on</span>
+                <input name="city" class="bg-transparent border-none focus:ring-0 text-body-md w-full placeholder:text-outline" placeholder="¿A dónde vas?" type="text" />
+            </div>
+        </div>
+        <div class="grid grid-cols-2 gap-3">
+            <div>
+                <label class="block font-label-md text-primary mb-1 ml-1">CHECK-IN</label>
+                <input name="checkIn" type="date" class="w-full bg-surface-container rounded-lg px-3 py-3 border-none focus:ring-2 ring-secondary text-body-md" />
+            </div>
+            <div>
+                <label class="block font-label-md text-primary mb-1 ml-1">CHECK-OUT</label>
+                <input name="checkOut" type="date" class="w-full bg-surface-container rounded-lg px-3 py-3 border-none focus:ring-2 ring-secondary text-body-md" />
+            </div>
+        </div>
+        <button type="submit" class="w-full bg-primary text-white font-title-lg py-4 rounded-xl shadow-md active:scale-[0.98] transition-transform flex items-center justify-center gap-2">
+            <span class="material-symbols-outlined">search</span> Buscar estancias
+        </button>
+    </form>
+</section>
+
+<!-- Featured -->
+<section class="mt-12 px-margin-mobile max-w-container-max mx-auto">
+    <div class="flex items-center justify-between mb-6">
+        <h2 class="font-display text-headline-md text-primary">Destacadas</h2>
+        <a href="/Catalog" class="text-secondary font-label-md cursor-pointer flex items-center">Ver todas <span class="material-symbols-outlined text-sm">chevron_right</span></a>
+    </div>
+    @if (Model.Count == 0)
+    {
+        <div class="bg-surface-container rounded-xl p-8 text-center text-on-surface-variant">
+            <span class="material-symbols-outlined text-4xl text-primary/40">apartment</span>
+            <p class="mt-2">Aún no hay propiedades publicadas.</p>
+        </div>
+    }
+    else
+    {
+        <div class="flex overflow-x-auto gap-gutter pb-4 hide-scrollbar">
+            @foreach (var p in Model)
+            {
+                <partial name="_PropertyCard" model="p" />
+            }
+        </div>
+    }
+</section>
+
+<!-- Benefits -->
+<section class="mt-12 px-margin-mobile max-w-container-max mx-auto">
+    <h2 class="font-display text-headline-md text-primary mb-6">La ventaja Cosmos</h2>
+    <div class="grid grid-cols-2 gap-4">
+        <div class="col-span-2 bg-primary-container p-6 rounded-2xl text-on-primary-container flex items-center gap-4">
+            <div class="w-12 h-12 bg-on-primary-container/20 rounded-xl flex items-center justify-center">
+                <span class="material-symbols-outlined text-3xl">verified_user</span>
+            </div>
+            <div>
+                <h4 class="font-title-lg mb-1">Identidad verificada (KYC)</h4>
+                <p class="text-body-md opacity-80">Validación de identidad por IA antes de la primera reserva.</p>
+            </div>
+        </div>
+        <div class="bg-secondary-container p-6 rounded-2xl text-on-secondary-container flex flex-col gap-4">
+            <span class="material-symbols-outlined text-3xl">bolt</span>
+            <h4 class="font-title-lg leading-tight">Reserva al instante</h4>
+        </div>
+        <div class="bg-surface-container-high p-6 rounded-2xl text-on-surface flex flex-col gap-4 border border-outline-variant">
+            <span class="material-symbols-outlined text-3xl text-primary">event_available</span>
+            <h4 class="font-title-lg leading-tight">Sin solapamientos</h4>
+        </div>
+    </div>
+</section>
+
+<!-- How it works -->
+<section class="mt-12 mx-margin-mobile px-margin-mobile py-8 bg-surface-container-low rounded-3xl max-w-container-max md:mx-auto">
+    <h2 class="font-display text-headline-md text-primary text-center mb-8">Cómo funciona</h2>
+    <div class="space-y-8 relative">
+        <div class="absolute left-6 top-8 bottom-8 w-0.5 bg-outline-variant z-0"></div>
+        <div class="flex items-start gap-4 relative z-10">
+            <div class="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-white font-bold shrink-0 shadow-md">1</div>
+            <div><h4 class="font-title-lg text-primary">Explora</h4><p class="text-on-surface-variant text-body-md">Navega el catálogo de propiedades sin registrarte.</p></div>
+        </div>
+        <div class="flex items-start gap-4 relative z-10">
+            <div class="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-white font-bold shrink-0 shadow-md">2</div>
+            <div><h4 class="font-title-lg text-primary">Valida</h4><p class="text-on-surface-variant text-body-md">Verificación de identidad con IA para reservar seguro.</p></div>
+        </div>
+        <div class="flex items-start gap-4 relative z-10">
+            <div class="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-white font-bold shrink-0 shadow-md">3</div>
+            <div><h4 class="font-title-lg text-primary">Disfruta</h4><p class="text-on-surface-variant text-body-md">Check-in 14:00, check-out 12:00. Nosotros nos encargamos.</p></div>
+        </div>
+    </div>
+</section>

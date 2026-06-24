@@ -1,0 +1,759 @@
+2026-06-23 18:01:29.711 -05:00 [ERR] An error occurred using the connection to database 'reservas' on server 'tcp://postgres:5432'.
+2026-06-23 18:51:03.044 -05:00 [ERR] An error occurred using the connection to database 'reservas' on server 'tcp://postgres:5432'.
+2026-06-23 18:56:26.469 -05:00 [INF] Executed DbCommand (15ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+2026-06-23 18:56:26.654 -05:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2026-06-23 18:56:26.696 -05:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE IF NOT EXISTS "__EFMigrationsHistory" (
+    "MigrationId" character varying(150) NOT NULL,
+    "ProductVersion" character varying(32) NOT NULL,
+    CONSTRAINT "PK___EFMigrationsHistory" PRIMARY KEY ("MigrationId")
+);
+2026-06-23 18:56:26.708 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+LOCK TABLE "__EFMigrationsHistory" IN ACCESS EXCLUSIVE MODE
+2026-06-23 18:56:26.710 -05:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+2026-06-23 18:56:26.714 -05:00 [INF] No migrations were applied. The database is already up to date.
+2026-06-23 18:56:26.918 -05:00 [INF] Executed DbCommand (7ms) [Parameters=[@normalizedName='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @normalizedName
+LIMIT 1
+2026-06-23 18:56:26.953 -05:00 [INF] Executed DbCommand (1ms) [Parameters=[@normalizedName='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @normalizedName
+LIMIT 1
+2026-06-23 18:56:27.036 -05:00 [INF] User profile is available. Using '/home/cohorte6/.aspnet/DataProtection-Keys' as key repository; keys will not be encrypted at rest.
+2026-06-23 18:56:27.099 -05:00 [INF] Now listening on: http://localhost:5152
+2026-06-23 18:56:27.100 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-06-23 18:56:27.100 -05:00 [INF] Hosting environment: Development
+2026-06-23 18:56:27.100 -05:00 [INF] Content root path: /home/cohorte6/Desktop/AssesmentReservas/AssesmentReservas.API
+2026-06-23 18:56:27.148 -05:00 [INF] Executed DbCommand (3ms) [Parameters=[@today='?' (DbType = Date), @checkInWindow='?' (DbType = Date)], CommandType='"Text"', CommandTimeout='30']
+SELECT b."Id", b."CancelledAt", b."CheckInDate", b."CheckInReminderSentAt", b."CheckOutDate", b."CheckOutReminderSentAt", b."ConfirmedAt", b."CreatedAt", b."GuestId", b."PricePerNight", b."PropertyId", b."Status", b."TotalPrice", p."Id", p."AddressLine", p."Bathrooms", p."Bedrooms", p."City", p."Country", p."CreatedAt", p."Description", p."IsActive", p."Latitude", p."Longitude", p."MaxGuests", p."OwnerId", p."PricePerNight", p."Title", p."UpdatedAt"
+FROM "Bookings" AS b
+INNER JOIN "Properties" AS p ON b."PropertyId" = p."Id"
+WHERE b."Status" = 1 AND b."CheckInReminderSentAt" IS NULL AND b."CheckInDate" >= @today AND b."CheckInDate" <= @checkInWindow
+2026-06-23 18:56:27.156 -05:00 [INF] Executed DbCommand (1ms) [Parameters=[@today='?' (DbType = Date)], CommandType='"Text"', CommandTimeout='30']
+SELECT b."Id", b."CancelledAt", b."CheckInDate", b."CheckInReminderSentAt", b."CheckOutDate", b."CheckOutReminderSentAt", b."ConfirmedAt", b."CreatedAt", b."GuestId", b."PricePerNight", b."PropertyId", b."Status", b."TotalPrice", p."Id", p."AddressLine", p."Bathrooms", p."Bedrooms", p."City", p."Country", p."CreatedAt", p."Description", p."IsActive", p."Latitude", p."Longitude", p."MaxGuests", p."OwnerId", p."PricePerNight", p."Title", p."UpdatedAt"
+FROM "Bookings" AS b
+INNER JOIN "Properties" AS p ON b."PropertyId" = p."Id"
+WHERE b."Status" = 1 AND b."CheckOutReminderSentAt" IS NULL AND b."CheckOutDate" = @today
+2026-06-23 18:56:27.160 -05:00 [INF] Executed DbCommand (1ms) [Parameters=[@today='?' (DbType = Date)], CommandType='"Text"', CommandTimeout='30']
+SELECT b."Id", b."CancelledAt", b."CheckInDate", b."CheckInReminderSentAt", b."CheckOutDate", b."CheckOutReminderSentAt", b."ConfirmedAt", b."CreatedAt", b."GuestId", b."PricePerNight", b."PropertyId", b."Status", b."TotalPrice"
+FROM "Bookings" AS b
+WHERE b."Status" = 1 AND b."CheckOutDate" < @today
+2026-06-23 18:56:43.050 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5152/ - null null
+2026-06-23 18:56:43.053 -05:00 [WRN] Failed to determine the https port for redirect.
+2026-06-23 18:56:43.103 -05:00 [INF] Executing endpoint 'AssesmentReservas.API.Controllers.HomeController.Index (AssesmentReservas.API)'
+2026-06-23 18:56:43.114 -05:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index(System.Threading.CancellationToken) on controller AssesmentReservas.API.Controllers.HomeController (AssesmentReservas.API).
+2026-06-23 18:56:43.234 -05:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT count(*)::int
+FROM "Properties" AS p
+WHERE p."IsActive"
+2026-06-23 18:56:43.258 -05:00 [INF] Executed DbCommand (2ms) [Parameters=[@p1='?' (DbType = Int32), @p='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT p."Id", p."Title", p."City", p."Country", p."PricePerNight", p."MaxGuests", (
+    SELECT p0."ObjectKey"
+    FROM "PropertyImages" AS p0
+    WHERE p."Id" = p0."PropertyId"
+    ORDER BY p0."IsCover" DESC
+    LIMIT 1) AS "CoverImageUrl"
+FROM "Properties" AS p
+WHERE p."IsActive"
+ORDER BY p."CreatedAt" DESC
+LIMIT @p1 OFFSET @p
+2026-06-23 18:56:43.269 -05:00 [INF] Executing ViewResult, running view Index.
+2026-06-23 18:56:43.306 -05:00 [INF] Executed ViewResult - view Index executed in 36.3183ms.
+2026-06-23 18:56:43.308 -05:00 [INF] Executed action AssesmentReservas.API.Controllers.HomeController.Index (AssesmentReservas.API) in 192.793ms
+2026-06-23 18:56:43.308 -05:00 [INF] Executed endpoint 'AssesmentReservas.API.Controllers.HomeController.Index (AssesmentReservas.API)'
+2026-06-23 18:56:43.310 -05:00 [INF] HTTP GET / responded 200 in 256.6100 ms
+2026-06-23 18:56:43.315 -05:00 [INF] Application is shutting down...
+2026-06-23 18:56:43.315 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5152/ - 200 null text/html; charset=utf-8 266.1283ms
+2026-06-23 19:01:32.948 -05:00 [INF] Executed DbCommand (15ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+2026-06-23 19:01:33.171 -05:00 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2026-06-23 19:01:33.217 -05:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE IF NOT EXISTS "__EFMigrationsHistory" (
+    "MigrationId" character varying(150) NOT NULL,
+    "ProductVersion" character varying(32) NOT NULL,
+    CONSTRAINT "PK___EFMigrationsHistory" PRIMARY KEY ("MigrationId")
+);
+2026-06-23 19:01:33.229 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+LOCK TABLE "__EFMigrationsHistory" IN ACCESS EXCLUSIVE MODE
+2026-06-23 19:01:33.232 -05:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+2026-06-23 19:01:33.236 -05:00 [INF] No migrations were applied. The database is already up to date.
+2026-06-23 19:01:33.440 -05:00 [INF] Executed DbCommand (6ms) [Parameters=[@normalizedName='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @normalizedName
+LIMIT 1
+2026-06-23 19:01:33.479 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[@normalizedName='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @normalizedName
+LIMIT 1
+2026-06-23 19:01:33.553 -05:00 [INF] User profile is available. Using '/home/cohorte6/.aspnet/DataProtection-Keys' as key repository; keys will not be encrypted at rest.
+2026-06-23 19:01:33.604 -05:00 [INF] Now listening on: http://localhost:5152
+2026-06-23 19:01:33.605 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-06-23 19:01:33.605 -05:00 [INF] Hosting environment: Development
+2026-06-23 19:01:33.605 -05:00 [INF] Content root path: /home/cohorte6/Desktop/AssesmentReservas/AssesmentReservas.API
+2026-06-23 19:01:33.660 -05:00 [INF] Executed DbCommand (3ms) [Parameters=[@today='?' (DbType = Date), @checkInWindow='?' (DbType = Date)], CommandType='"Text"', CommandTimeout='30']
+SELECT b."Id", b."CancelledAt", b."CheckInDate", b."CheckInReminderSentAt", b."CheckOutDate", b."CheckOutReminderSentAt", b."ConfirmedAt", b."CreatedAt", b."GuestId", b."PricePerNight", b."PropertyId", b."Status", b."TotalPrice", p."Id", p."AddressLine", p."Bathrooms", p."Bedrooms", p."City", p."Country", p."CreatedAt", p."Description", p."IsActive", p."Latitude", p."Longitude", p."MaxGuests", p."OwnerId", p."PricePerNight", p."Title", p."UpdatedAt"
+FROM "Bookings" AS b
+INNER JOIN "Properties" AS p ON b."PropertyId" = p."Id"
+WHERE b."Status" = 1 AND b."CheckInReminderSentAt" IS NULL AND b."CheckInDate" >= @today AND b."CheckInDate" <= @checkInWindow
+2026-06-23 19:01:33.668 -05:00 [INF] Executed DbCommand (1ms) [Parameters=[@today='?' (DbType = Date)], CommandType='"Text"', CommandTimeout='30']
+SELECT b."Id", b."CancelledAt", b."CheckInDate", b."CheckInReminderSentAt", b."CheckOutDate", b."CheckOutReminderSentAt", b."ConfirmedAt", b."CreatedAt", b."GuestId", b."PricePerNight", b."PropertyId", b."Status", b."TotalPrice", p."Id", p."AddressLine", p."Bathrooms", p."Bedrooms", p."City", p."Country", p."CreatedAt", p."Description", p."IsActive", p."Latitude", p."Longitude", p."MaxGuests", p."OwnerId", p."PricePerNight", p."Title", p."UpdatedAt"
+FROM "Bookings" AS b
+INNER JOIN "Properties" AS p ON b."PropertyId" = p."Id"
+WHERE b."Status" = 1 AND b."CheckOutReminderSentAt" IS NULL AND b."CheckOutDate" = @today
+2026-06-23 19:01:33.673 -05:00 [INF] Executed DbCommand (1ms) [Parameters=[@today='?' (DbType = Date)], CommandType='"Text"', CommandTimeout='30']
+SELECT b."Id", b."CancelledAt", b."CheckInDate", b."CheckInReminderSentAt", b."CheckOutDate", b."CheckOutReminderSentAt", b."ConfirmedAt", b."CreatedAt", b."GuestId", b."PricePerNight", b."PropertyId", b."Status", b."TotalPrice"
+FROM "Bookings" AS b
+WHERE b."Status" = 1 AND b."CheckOutDate" < @today
+2026-06-23 19:01:45.338 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5152/ - null null
+2026-06-23 19:01:45.341 -05:00 [WRN] Failed to determine the https port for redirect.
+2026-06-23 19:01:45.402 -05:00 [INF] Executing endpoint 'AssesmentReservas.API.Controllers.HomeController.Index (AssesmentReservas.API)'
+2026-06-23 19:01:45.419 -05:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index(System.Threading.CancellationToken) on controller AssesmentReservas.API.Controllers.HomeController (AssesmentReservas.API).
+2026-06-23 19:01:45.549 -05:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT count(*)::int
+FROM "Properties" AS p
+WHERE p."IsActive"
+2026-06-23 19:01:45.571 -05:00 [INF] Executed DbCommand (2ms) [Parameters=[@p1='?' (DbType = Int32), @p='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT p."Id", p."Title", p."City", p."Country", p."PricePerNight", p."MaxGuests", (
+    SELECT p0."ObjectKey"
+    FROM "PropertyImages" AS p0
+    WHERE p."Id" = p0."PropertyId"
+    ORDER BY p0."IsCover" DESC
+    LIMIT 1) AS "CoverImageUrl"
+FROM "Properties" AS p
+WHERE p."IsActive"
+ORDER BY p."CreatedAt" DESC
+LIMIT @p1 OFFSET @p
+2026-06-23 19:01:45.583 -05:00 [INF] Executing ViewResult, running view Index.
+2026-06-23 19:01:45.626 -05:00 [INF] Executed ViewResult - view Index executed in 43.3483ms.
+2026-06-23 19:01:45.627 -05:00 [INF] Executed action AssesmentReservas.API.Controllers.HomeController.Index (AssesmentReservas.API) in 207.5199ms
+2026-06-23 19:01:45.628 -05:00 [INF] Executed endpoint 'AssesmentReservas.API.Controllers.HomeController.Index (AssesmentReservas.API)'
+2026-06-23 19:01:45.630 -05:00 [INF] HTTP GET / responded 200 in 288.5457 ms
+2026-06-23 19:01:45.636 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5152/ - 200 null text/html; charset=utf-8 298.7939ms
+2026-06-23 19:01:47.229 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5152/favicon.ico - null null
+2026-06-23 19:01:47.234 -05:00 [INF] Executing endpoint 'Microsoft.AspNetCore.Routing.RouteEndpoint'
+2026-06-23 19:01:47.246 -05:00 [INF] Sending file. Request path: 'favicon.ico'. Physical path: '/home/cohorte6/Desktop/AssesmentReservas/AssesmentReservas.API/obj/Debug/net10.0/compressed/13u6jku5h5-{0}-61n19gt1b8-61n19gt1b8.gz'
+2026-06-23 19:01:47.246 -05:00 [INF] Executed endpoint 'Microsoft.AspNetCore.Routing.RouteEndpoint'
+2026-06-23 19:01:47.246 -05:00 [INF] HTTP GET /favicon.ico responded 200 in 16.9028 ms
+2026-06-23 19:01:47.247 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5152/favicon.ico - 200 5463 image/x-icon 17.5863ms
+2026-06-23 19:01:55.328 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5152/Favorites - null null
+2026-06-23 19:01:55.336 -05:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2026-06-23 19:01:55.338 -05:00 [INF] AuthenticationScheme: Identity.Application was challenged.
+2026-06-23 19:01:55.338 -05:00 [INF] HTTP GET /Favorites responded 302 in 10.2500 ms
+2026-06-23 19:01:55.339 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5152/Favorites - 302 0 null 10.9226ms
+2026-06-23 19:01:55.340 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5152/Account/Login?ReturnUrl=%2FFavorites - null null
+2026-06-23 19:01:55.340 -05:00 [INF] Executing endpoint 'AssesmentReservas.API.Controllers.AccountController.Login (AssesmentReservas.API)'
+2026-06-23 19:01:55.344 -05:00 [INF] Route matched with {action = "Login", controller = "Account"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Login(System.String) on controller AssesmentReservas.API.Controllers.AccountController (AssesmentReservas.API).
+2026-06-23 19:01:55.356 -05:00 [INF] Executing ViewResult, running view Login.
+2026-06-23 19:01:55.403 -05:00 [INF] Executed ViewResult - view Login executed in 47.955ms.
+2026-06-23 19:01:55.403 -05:00 [INF] Executed action AssesmentReservas.API.Controllers.AccountController.Login (AssesmentReservas.API) in 59.3173ms
+2026-06-23 19:01:55.403 -05:00 [INF] Executed endpoint 'AssesmentReservas.API.Controllers.AccountController.Login (AssesmentReservas.API)'
+2026-06-23 19:01:55.403 -05:00 [INF] HTTP GET /Account/Login responded 200 in 63.2166 ms
+2026-06-23 19:01:55.404 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5152/Account/Login?ReturnUrl=%2FFavorites - 200 null text/html; charset=utf-8 63.7006ms
+2026-06-23 19:01:55.414 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5152/lib/jquery-validation/dist/jquery.validate.min.js - null null
+2026-06-23 19:01:55.415 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5152/lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js - null null
+2026-06-23 19:01:55.415 -05:00 [INF] Executing endpoint 'Microsoft.AspNetCore.Routing.RouteEndpoint'
+2026-06-23 19:01:55.415 -05:00 [INF] Executing endpoint 'Microsoft.AspNetCore.Routing.RouteEndpoint'
+2026-06-23 19:01:55.416 -05:00 [INF] Sending file. Request path: 'lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js'. Physical path: '/home/cohorte6/Desktop/AssesmentReservas/AssesmentReservas.API/obj/Debug/net10.0/compressed/xytiqjfy45-{0}-4v8eqarkd7-4v8eqarkd7.gz'
+2026-06-23 19:01:55.416 -05:00 [INF] Sending file. Request path: 'lib/jquery-validation/dist/jquery.validate.min.js'. Physical path: '/home/cohorte6/Desktop/AssesmentReservas/AssesmentReservas.API/obj/Debug/net10.0/compressed/r4l46yo857-{0}-ag7o75518u-ag7o75518u.gz'
+2026-06-23 19:01:55.417 -05:00 [INF] Executed endpoint 'Microsoft.AspNetCore.Routing.RouteEndpoint'
+2026-06-23 19:01:55.417 -05:00 [INF] Executed endpoint 'Microsoft.AspNetCore.Routing.RouteEndpoint'
+2026-06-23 19:01:55.417 -05:00 [INF] HTTP GET /lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js responded 200 in 2.0154 ms
+2026-06-23 19:01:55.417 -05:00 [INF] HTTP GET /lib/jquery-validation/dist/jquery.validate.min.js responded 200 in 2.3692 ms
+2026-06-23 19:01:55.417 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5152/lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js - 200 5857 text/javascript 2.5241ms
+2026-06-23 19:01:55.417 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5152/lib/jquery-validation/dist/jquery.validate.min.js - 200 25341 text/javascript 2.8533ms
+2026-06-23 19:01:58.071 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5152/Account/Register?returnUrl=%2FFavorites - null null
+2026-06-23 19:01:58.072 -05:00 [INF] Executing endpoint 'AssesmentReservas.API.Controllers.AccountController.Register (AssesmentReservas.API)'
+2026-06-23 19:01:58.074 -05:00 [INF] Route matched with {action = "Register", controller = "Account"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Register(System.String) on controller AssesmentReservas.API.Controllers.AccountController (AssesmentReservas.API).
+2026-06-23 19:01:58.081 -05:00 [INF] Executing ViewResult, running view Register.
+2026-06-23 19:01:58.108 -05:00 [INF] Executed ViewResult - view Register executed in 28.0512ms.
+2026-06-23 19:01:58.109 -05:00 [INF] Executed action AssesmentReservas.API.Controllers.AccountController.Register (AssesmentReservas.API) in 34.1267ms
+2026-06-23 19:01:58.109 -05:00 [INF] Executed endpoint 'AssesmentReservas.API.Controllers.AccountController.Register (AssesmentReservas.API)'
+2026-06-23 19:01:58.109 -05:00 [INF] HTTP GET /Account/Register responded 200 in 37.9639 ms
+2026-06-23 19:01:58.109 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5152/Account/Register?returnUrl=%2FFavorites - 200 null text/html; charset=utf-8 38.3804ms
+2026-06-23 19:01:58.116 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5152/lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js - null null
+2026-06-23 19:01:58.116 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5152/lib/jquery-validation/dist/jquery.validate.min.js - null null
+2026-06-23 19:01:58.121 -05:00 [INF] Executing endpoint 'Microsoft.AspNetCore.Routing.RouteEndpoint'
+2026-06-23 19:01:58.123 -05:00 [INF] Sending file. Request path: 'lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js'. Physical path: '/home/cohorte6/Desktop/AssesmentReservas/AssesmentReservas.API/obj/Debug/net10.0/compressed/xytiqjfy45-{0}-4v8eqarkd7-4v8eqarkd7.gz'
+2026-06-23 19:01:58.123 -05:00 [INF] Executed endpoint 'Microsoft.AspNetCore.Routing.RouteEndpoint'
+2026-06-23 19:01:58.123 -05:00 [INF] HTTP GET /lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js responded 200 in 6.4728 ms
+2026-06-23 19:01:58.123 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5152/lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js - 200 5857 text/javascript 6.8188ms
+2026-06-23 19:01:58.124 -05:00 [INF] Executing endpoint 'Microsoft.AspNetCore.Routing.RouteEndpoint'
+2026-06-23 19:01:58.124 -05:00 [INF] Sending file. Request path: 'lib/jquery-validation/dist/jquery.validate.min.js'. Physical path: '/home/cohorte6/Desktop/AssesmentReservas/AssesmentReservas.API/obj/Debug/net10.0/compressed/r4l46yo857-{0}-ag7o75518u-ag7o75518u.gz'
+2026-06-23 19:01:58.124 -05:00 [INF] Executed endpoint 'Microsoft.AspNetCore.Routing.RouteEndpoint'
+2026-06-23 19:01:58.124 -05:00 [INF] HTTP GET /lib/jquery-validation/dist/jquery.validate.min.js responded 200 in 7.9312 ms
+2026-06-23 19:01:58.125 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5152/lib/jquery-validation/dist/jquery.validate.min.js - 200 25341 text/javascript 8.4029ms
+2026-06-23 19:02:16.803 -05:00 [INF] Request starting HTTP/1.1 POST http://localhost:5152/Account/Register?returnUrl=%2FFavorites - application/x-www-form-urlencoded 272
+2026-06-23 19:02:16.803 -05:00 [INF] Executing endpoint 'AssesmentReservas.API.Controllers.AccountController.Register (AssesmentReservas.API)'
+2026-06-23 19:02:16.809 -05:00 [INF] Route matched with {action = "Register", controller = "Account"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Register(AssesmentReservas.API.DTOs.Identity.RegisterDto, System.String) on controller AssesmentReservas.API.Controllers.AccountController (AssesmentReservas.API).
+2026-06-23 19:02:16.845 -05:00 [INF] Executed DbCommand (1ms) [Parameters=[@normalizedEmail='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."CreatedAt", a."Email", a."EmailConfirmed", a."FirstName", a."IsKycVerified", a."LastName", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."SecurityStamp", a."TwoFactorEnabled", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."NormalizedEmail" = @normalizedEmail
+LIMIT 2
+2026-06-23 19:02:16.850 -05:00 [INF] Executing ViewResult, running view Register.
+2026-06-23 19:02:16.854 -05:00 [INF] Executed ViewResult - view Register executed in 4.3598ms.
+2026-06-23 19:02:16.855 -05:00 [INF] Executed action AssesmentReservas.API.Controllers.AccountController.Register (AssesmentReservas.API) in 45.3933ms
+2026-06-23 19:02:16.855 -05:00 [INF] Executed endpoint 'AssesmentReservas.API.Controllers.AccountController.Register (AssesmentReservas.API)'
+2026-06-23 19:02:16.855 -05:00 [INF] HTTP POST /Account/Register responded 200 in 51.7520 ms
+2026-06-23 19:02:16.855 -05:00 [INF] Request finished HTTP/1.1 POST http://localhost:5152/Account/Register?returnUrl=%2FFavorites - 200 null text/html; charset=utf-8 52.2604ms
+2026-06-23 19:02:16.866 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5152/lib/jquery-validation/dist/jquery.validate.min.js - null null
+2026-06-23 19:02:16.866 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5152/lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js - null null
+2026-06-23 19:02:16.866 -05:00 [INF] Executing endpoint 'Microsoft.AspNetCore.Routing.RouteEndpoint'
+2026-06-23 19:02:16.866 -05:00 [INF] Executing endpoint 'Microsoft.AspNetCore.Routing.RouteEndpoint'
+2026-06-23 19:02:16.866 -05:00 [INF] Sending file. Request path: 'lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js'. Physical path: '/home/cohorte6/Desktop/AssesmentReservas/AssesmentReservas.API/obj/Debug/net10.0/compressed/xytiqjfy45-{0}-4v8eqarkd7-4v8eqarkd7.gz'
+2026-06-23 19:02:16.866 -05:00 [INF] Sending file. Request path: 'lib/jquery-validation/dist/jquery.validate.min.js'. Physical path: '/home/cohorte6/Desktop/AssesmentReservas/AssesmentReservas.API/obj/Debug/net10.0/compressed/r4l46yo857-{0}-ag7o75518u-ag7o75518u.gz'
+2026-06-23 19:02:16.867 -05:00 [INF] Executed endpoint 'Microsoft.AspNetCore.Routing.RouteEndpoint'
+2026-06-23 19:02:16.867 -05:00 [INF] Executed endpoint 'Microsoft.AspNetCore.Routing.RouteEndpoint'
+2026-06-23 19:02:16.867 -05:00 [INF] HTTP GET /lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js responded 200 in 0.6887 ms
+2026-06-23 19:02:16.867 -05:00 [INF] HTTP GET /lib/jquery-validation/dist/jquery.validate.min.js responded 200 in 0.8250 ms
+2026-06-23 19:02:16.867 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5152/lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js - 200 5857 text/javascript 1.0913ms
+2026-06-23 19:02:16.867 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5152/lib/jquery-validation/dist/jquery.validate.min.js - 200 25341 text/javascript 1.2009ms
+2026-06-23 19:02:31.195 -05:00 [INF] Request starting HTTP/1.1 POST http://localhost:5152/Account/Register?returnUrl=%2FFavorites - application/x-www-form-urlencoded 273
+2026-06-23 19:02:31.195 -05:00 [INF] Executing endpoint 'AssesmentReservas.API.Controllers.AccountController.Register (AssesmentReservas.API)'
+2026-06-23 19:02:31.195 -05:00 [INF] Route matched with {action = "Register", controller = "Account"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Register(AssesmentReservas.API.DTOs.Identity.RegisterDto, System.String) on controller AssesmentReservas.API.Controllers.AccountController (AssesmentReservas.API).
+2026-06-23 19:02:31.197 -05:00 [INF] Executed DbCommand (1ms) [Parameters=[@normalizedEmail='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."CreatedAt", a."Email", a."EmailConfirmed", a."FirstName", a."IsKycVerified", a."LastName", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."SecurityStamp", a."TwoFactorEnabled", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."NormalizedEmail" = @normalizedEmail
+LIMIT 2
+2026-06-23 19:02:31.198 -05:00 [INF] Executing ViewResult, running view Register.
+2026-06-23 19:02:31.199 -05:00 [INF] Executed ViewResult - view Register executed in 1.6588ms.
+2026-06-23 19:02:31.200 -05:00 [INF] Executed action AssesmentReservas.API.Controllers.AccountController.Register (AssesmentReservas.API) in 4.4739ms
+2026-06-23 19:02:31.200 -05:00 [INF] Executed endpoint 'AssesmentReservas.API.Controllers.AccountController.Register (AssesmentReservas.API)'
+2026-06-23 19:02:31.200 -05:00 [INF] HTTP POST /Account/Register responded 200 in 5.0181 ms
+2026-06-23 19:02:31.200 -05:00 [INF] Request finished HTTP/1.1 POST http://localhost:5152/Account/Register?returnUrl=%2FFavorites - 200 null text/html; charset=utf-8 5.3684ms
+2026-06-23 19:02:31.208 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5152/lib/jquery-validation/dist/jquery.validate.min.js - null null
+2026-06-23 19:02:31.208 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5152/lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js - null null
+2026-06-23 19:02:31.208 -05:00 [INF] Executing endpoint 'Microsoft.AspNetCore.Routing.RouteEndpoint'
+2026-06-23 19:02:31.208 -05:00 [INF] Executing endpoint 'Microsoft.AspNetCore.Routing.RouteEndpoint'
+2026-06-23 19:02:31.209 -05:00 [INF] Sending file. Request path: 'lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js'. Physical path: '/home/cohorte6/Desktop/AssesmentReservas/AssesmentReservas.API/obj/Debug/net10.0/compressed/xytiqjfy45-{0}-4v8eqarkd7-4v8eqarkd7.gz'
+2026-06-23 19:02:31.209 -05:00 [INF] Sending file. Request path: 'lib/jquery-validation/dist/jquery.validate.min.js'. Physical path: '/home/cohorte6/Desktop/AssesmentReservas/AssesmentReservas.API/obj/Debug/net10.0/compressed/r4l46yo857-{0}-ag7o75518u-ag7o75518u.gz'
+2026-06-23 19:02:31.209 -05:00 [INF] Executed endpoint 'Microsoft.AspNetCore.Routing.RouteEndpoint'
+2026-06-23 19:02:31.209 -05:00 [INF] Executed endpoint 'Microsoft.AspNetCore.Routing.RouteEndpoint'
+2026-06-23 19:02:31.209 -05:00 [INF] HTTP GET /lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js responded 200 in 1.0470 ms
+2026-06-23 19:02:31.209 -05:00 [INF] HTTP GET /lib/jquery-validation/dist/jquery.validate.min.js responded 200 in 1.1920 ms
+2026-06-23 19:02:31.209 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5152/lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js - 200 5857 text/javascript 1.4534ms
+2026-06-23 19:02:31.209 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5152/lib/jquery-validation/dist/jquery.validate.min.js - 200 25341 text/javascript 1.5427ms
+2026-06-23 19:02:55.441 -05:00 [INF] Request starting HTTP/1.1 POST http://localhost:5152/Account/Register?returnUrl=%2FFavorites - application/x-www-form-urlencoded 272
+2026-06-23 19:02:55.441 -05:00 [INF] Executing endpoint 'AssesmentReservas.API.Controllers.AccountController.Register (AssesmentReservas.API)'
+2026-06-23 19:02:55.442 -05:00 [INF] Route matched with {action = "Register", controller = "Account"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Register(AssesmentReservas.API.DTOs.Identity.RegisterDto, System.String) on controller AssesmentReservas.API.Controllers.AccountController (AssesmentReservas.API).
+2026-06-23 19:02:55.443 -05:00 [INF] Executed DbCommand (1ms) [Parameters=[@normalizedEmail='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."CreatedAt", a."Email", a."EmailConfirmed", a."FirstName", a."IsKycVerified", a."LastName", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."SecurityStamp", a."TwoFactorEnabled", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."NormalizedEmail" = @normalizedEmail
+LIMIT 2
+2026-06-23 19:02:55.516 -05:00 [INF] Executed DbCommand (1ms) [Parameters=[@normalizedUserName='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."CreatedAt", a."Email", a."EmailConfirmed", a."FirstName", a."IsKycVerified", a."LastName", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."SecurityStamp", a."TwoFactorEnabled", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."NormalizedUserName" = @normalizedUserName
+LIMIT 1
+2026-06-23 19:02:55.519 -05:00 [INF] Executed DbCommand (1ms) [Parameters=[@normalizedEmail='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."CreatedAt", a."Email", a."EmailConfirmed", a."FirstName", a."IsKycVerified", a."LastName", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."SecurityStamp", a."TwoFactorEnabled", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."NormalizedEmail" = @normalizedEmail
+LIMIT 2
+2026-06-23 19:02:55.622 -05:00 [INF] Executed DbCommand (6ms) [Parameters=[@p0='?', @p1='?' (DbType = Int32), @p2='?', @p3='?' (DbType = DateTime), @p4='?', @p5='?' (DbType = Boolean), @p6='?', @p7='?' (DbType = Boolean), @p8='?', @p9='?' (DbType = Boolean), @p10='?' (DbType = DateTime), @p11='?', @p12='?', @p13='?', @p14='?', @p15='?' (DbType = Boolean), @p16='?', @p17='?' (DbType = Boolean), @p18='?'], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "AspNetUsers" ("Id", "AccessFailedCount", "ConcurrencyStamp", "CreatedAt", "Email", "EmailConfirmed", "FirstName", "IsKycVerified", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15, @p16, @p17, @p18);
+2026-06-23 19:02:55.635 -05:00 [INF] Executed DbCommand (1ms) [Parameters=[@normalizedRoleName='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @normalizedRoleName
+LIMIT 2
+2026-06-23 19:02:55.647 -05:00 [INF] Executed DbCommand (1ms) [Parameters=[@p='?', @p1='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."UserId", a."RoleId"
+FROM "AspNetUserRoles" AS a
+WHERE a."UserId" = @p AND a."RoleId" = @p1
+LIMIT 1
+2026-06-23 19:02:55.649 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[@normalizedRoleName='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @normalizedRoleName
+LIMIT 2
+2026-06-23 19:02:55.658 -05:00 [INF] Executed DbCommand (1ms) [Parameters=[@normalizedUserName='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."CreatedAt", a."Email", a."EmailConfirmed", a."FirstName", a."IsKycVerified", a."LastName", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."SecurityStamp", a."TwoFactorEnabled", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."NormalizedUserName" = @normalizedUserName
+LIMIT 1
+2026-06-23 19:02:55.660 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[@normalizedEmail='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."CreatedAt", a."Email", a."EmailConfirmed", a."FirstName", a."IsKycVerified", a."LastName", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."SecurityStamp", a."TwoFactorEnabled", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."NormalizedEmail" = @normalizedEmail
+LIMIT 2
+2026-06-23 19:02:55.676 -05:00 [INF] Executed DbCommand (1ms) [Parameters=[@p0='?', @p1='?', @p20='?', @p2='?' (DbType = Int32), @p3='?', @p21='?', @p4='?' (DbType = DateTime), @p5='?', @p6='?' (DbType = Boolean), @p7='?', @p8='?' (DbType = Boolean), @p9='?', @p10='?' (DbType = Boolean), @p11='?' (DbType = DateTime), @p12='?', @p13='?', @p14='?', @p15='?', @p16='?' (DbType = Boolean), @p17='?', @p18='?' (DbType = Boolean), @p19='?'], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "AspNetUserRoles" ("RoleId", "UserId")
+VALUES (@p0, @p1);
+UPDATE "AspNetUsers" SET "AccessFailedCount" = @p2, "ConcurrencyStamp" = @p3, "CreatedAt" = @p4, "Email" = @p5, "EmailConfirmed" = @p6, "FirstName" = @p7, "IsKycVerified" = @p8, "LastName" = @p9, "LockoutEnabled" = @p10, "LockoutEnd" = @p11, "NormalizedEmail" = @p12, "NormalizedUserName" = @p13, "PasswordHash" = @p14, "PhoneNumber" = @p15, "PhoneNumberConfirmed" = @p16, "SecurityStamp" = @p17, "TwoFactorEnabled" = @p18, "UserName" = @p19
+WHERE "Id" = @p20 AND "ConcurrencyStamp" = @p21;
+2026-06-23 19:02:55.688 -05:00 [INF] Executed DbCommand (1ms) [Parameters=[@user_Id='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."ClaimType", a."ClaimValue", a."UserId"
+FROM "AspNetUserClaims" AS a
+WHERE a."UserId" = @user_Id
+2026-06-23 19:02:55.698 -05:00 [INF] Executed DbCommand (1ms) [Parameters=[@userId='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a0."Name"
+FROM "AspNetUserRoles" AS a
+INNER JOIN "AspNetRoles" AS a0 ON a."RoleId" = a0."Id"
+WHERE a."UserId" = @userId
+2026-06-23 19:02:55.700 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[@normalizedName='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @normalizedName
+LIMIT 1
+2026-06-23 19:02:55.704 -05:00 [INF] Executed DbCommand (1ms) [Parameters=[@role_Id='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."ClaimType", a."ClaimValue"
+FROM "AspNetRoleClaims" AS a
+WHERE a."RoleId" = @role_Id
+2026-06-23 19:02:55.708 -05:00 [INF] AuthenticationScheme: Identity.Application signed in.
+2026-06-23 19:02:55.709 -05:00 [INF] Usuario lucas.pvp.16@gmail.com registrado con rol Guest
+2026-06-23 19:02:55.711 -05:00 [INF] Executed DbCommand (1ms) [Parameters=[@userId='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a0."Name"
+FROM "AspNetUserRoles" AS a
+INNER JOIN "AspNetRoles" AS a0 ON a."RoleId" = a0."Id"
+WHERE a."UserId" = @userId
+2026-06-23 19:02:55.712 -05:00 [INF] Executing RedirectResult, redirecting to /Favorites.
+2026-06-23 19:02:55.712 -05:00 [INF] Executed action AssesmentReservas.API.Controllers.AccountController.Register (AssesmentReservas.API) in 270.6745ms
+2026-06-23 19:02:55.712 -05:00 [INF] Executed endpoint 'AssesmentReservas.API.Controllers.AccountController.Register (AssesmentReservas.API)'
+2026-06-23 19:02:55.713 -05:00 [INF] HTTP POST /Account/Register responded 302 in 271.3641 ms
+2026-06-23 19:02:55.713 -05:00 [INF] Request finished HTTP/1.1 POST http://localhost:5152/Account/Register?returnUrl=%2FFavorites - 302 0 null 271.7742ms
+2026-06-23 19:02:55.714 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5152/Favorites - null null
+2026-06-23 19:02:55.717 -05:00 [INF] Executing endpoint 'AssesmentReservas.API.Controllers.FavoritesController.Index (AssesmentReservas.API)'
+2026-06-23 19:02:55.721 -05:00 [INF] Route matched with {action = "Index", controller = "Favorites"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index(System.Threading.CancellationToken) on controller AssesmentReservas.API.Controllers.FavoritesController (AssesmentReservas.API).
+2026-06-23 19:02:55.731 -05:00 [INF] Executed DbCommand (1ms) [Parameters=[@userId='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT p."Id", p."Title", p."City", p."Country", p."PricePerNight", p."MaxGuests", (
+    SELECT p0."ObjectKey"
+    FROM "PropertyImages" AS p0
+    WHERE p."Id" = p0."PropertyId"
+    ORDER BY p0."IsCover" DESC
+    LIMIT 1) AS "CoverImageUrl"
+FROM "Favorites" AS f
+INNER JOIN "Properties" AS p ON f."PropertyId" = p."Id"
+WHERE f."UserId" = @userId
+ORDER BY f."CreatedAt" DESC
+2026-06-23 19:02:55.732 -05:00 [INF] Executing ViewResult, running view Index.
+2026-06-23 19:02:55.737 -05:00 [INF] Executed ViewResult - view Index executed in 5.128ms.
+2026-06-23 19:02:55.737 -05:00 [INF] Executed action AssesmentReservas.API.Controllers.FavoritesController.Index (AssesmentReservas.API) in 15.8426ms
+2026-06-23 19:02:55.737 -05:00 [INF] Executed endpoint 'AssesmentReservas.API.Controllers.FavoritesController.Index (AssesmentReservas.API)'
+2026-06-23 19:02:55.737 -05:00 [INF] HTTP GET /Favorites responded 200 in 22.8852 ms
+2026-06-23 19:02:55.738 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5152/Favorites - 200 null text/html; charset=utf-8 23.2141ms
+2026-06-23 19:02:59.590 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5152/Catalog - null null
+2026-06-23 19:02:59.591 -05:00 [INF] Executing endpoint 'AssesmentReservas.API.Controllers.CatalogController.Index (AssesmentReservas.API)'
+2026-06-23 19:02:59.598 -05:00 [INF] Route matched with {action = "Index", controller = "Catalog"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index(AssesmentReservas.API.DTOs.Properties.PropertySearchDto, System.Threading.CancellationToken) on controller AssesmentReservas.API.Controllers.CatalogController (AssesmentReservas.API).
+2026-06-23 19:02:59.603 -05:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT count(*)::int
+FROM "Properties" AS p
+WHERE p."IsActive"
+2026-06-23 19:02:59.605 -05:00 [INF] Executed DbCommand (1ms) [Parameters=[@p1='?' (DbType = Int32), @p='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT p."Id", p."Title", p."City", p."Country", p."PricePerNight", p."MaxGuests", (
+    SELECT p0."ObjectKey"
+    FROM "PropertyImages" AS p0
+    WHERE p."Id" = p0."PropertyId"
+    ORDER BY p0."IsCover" DESC
+    LIMIT 1) AS "CoverImageUrl"
+FROM "Properties" AS p
+WHERE p."IsActive"
+ORDER BY p."CreatedAt" DESC
+LIMIT @p1 OFFSET @p
+2026-06-23 19:02:59.630 -05:00 [INF] Executing ViewResult, running view Index.
+2026-06-23 19:02:59.639 -05:00 [INF] Executed ViewResult - view Index executed in 9.6586ms.
+2026-06-23 19:02:59.639 -05:00 [INF] Executed action AssesmentReservas.API.Controllers.CatalogController.Index (AssesmentReservas.API) in 40.6837ms
+2026-06-23 19:02:59.639 -05:00 [INF] Executed endpoint 'AssesmentReservas.API.Controllers.CatalogController.Index (AssesmentReservas.API)'
+2026-06-23 19:02:59.639 -05:00 [INF] HTTP GET /Catalog responded 200 in 48.8862 ms
+2026-06-23 19:02:59.639 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5152/Catalog - 200 null text/html; charset=utf-8 49.2432ms
+2026-06-23 19:03:01.294 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5152/Catalog/Details/3 - null null
+2026-06-23 19:03:01.296 -05:00 [INF] Executing endpoint 'AssesmentReservas.API.Controllers.CatalogController.Details (AssesmentReservas.API)'
+2026-06-23 19:03:01.300 -05:00 [INF] Route matched with {action = "Details", controller = "Catalog"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Details(Int32, System.Threading.CancellationToken) on controller AssesmentReservas.API.Controllers.CatalogController (AssesmentReservas.API).
+2026-06-23 19:03:01.431 -05:00 [INF] Executed DbCommand (1ms) [Parameters=[@id='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT p1."Id", p1."AddressLine", p1."Bathrooms", p1."Bedrooms", p1."City", p1."Country", p1."CreatedAt", p1."Description", p1."IsActive", p1."Latitude", p1."Longitude", p1."MaxGuests", p1."OwnerId", p1."PricePerNight", p1."Title", p1."UpdatedAt", p0."Id", p0."CreatedAt", p0."IsCover", p0."ObjectKey", p0."PropertyId"
+FROM (
+    SELECT p."Id", p."AddressLine", p."Bathrooms", p."Bedrooms", p."City", p."Country", p."CreatedAt", p."Description", p."IsActive", p."Latitude", p."Longitude", p."MaxGuests", p."OwnerId", p."PricePerNight", p."Title", p."UpdatedAt"
+    FROM "Properties" AS p
+    WHERE p."Id" = @id
+    LIMIT 1
+) AS p1
+LEFT JOIN "PropertyImages" AS p0 ON p1."Id" = p0."PropertyId"
+ORDER BY p1."Id"
+2026-06-23 19:03:01.474 -05:00 [INF] Executed DbCommand (1ms) [Parameters=[@userId='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT p."Id", p."Title", p."City", p."Country", p."PricePerNight", p."MaxGuests", (
+    SELECT p0."ObjectKey"
+    FROM "PropertyImages" AS p0
+    WHERE p."Id" = p0."PropertyId"
+    ORDER BY p0."IsCover" DESC
+    LIMIT 1) AS "CoverImageUrl"
+FROM "Favorites" AS f
+INNER JOIN "Properties" AS p ON f."PropertyId" = p."Id"
+WHERE f."UserId" = @userId
+ORDER BY f."CreatedAt" DESC
+2026-06-23 19:03:01.476 -05:00 [INF] Executing ViewResult, running view Details.
+2026-06-23 19:03:01.491 -05:00 [INF] Executed ViewResult - view Details executed in 16.2053ms.
+2026-06-23 19:03:01.491 -05:00 [INF] Executed action AssesmentReservas.API.Controllers.CatalogController.Details (AssesmentReservas.API) in 191.2013ms
+2026-06-23 19:03:01.492 -05:00 [INF] Executed endpoint 'AssesmentReservas.API.Controllers.CatalogController.Details (AssesmentReservas.API)'
+2026-06-23 19:03:01.492 -05:00 [INF] HTTP GET /Catalog/Details/3 responded 200 in 197.9353 ms
+2026-06-23 19:03:01.492 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5152/Catalog/Details/3 - 200 null text/html; charset=utf-8 198.2192ms
+2026-06-23 19:03:08.758 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5152/Bookings/Create?propertyId=3 - null null
+2026-06-23 19:03:08.760 -05:00 [INF] Executing endpoint 'AssesmentReservas.API.Controllers.BookingsController.Create (AssesmentReservas.API)'
+2026-06-23 19:03:08.765 -05:00 [INF] Route matched with {action = "Create", controller = "Bookings"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Create(Int32, System.Threading.CancellationToken) on controller AssesmentReservas.API.Controllers.BookingsController (AssesmentReservas.API).
+2026-06-23 19:03:08.777 -05:00 [INF] Executed DbCommand (1ms) [Parameters=[@p='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."CreatedAt", a."Email", a."EmailConfirmed", a."FirstName", a."IsKycVerified", a."LastName", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."SecurityStamp", a."TwoFactorEnabled", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."Id" = @p
+LIMIT 1
+2026-06-23 19:03:08.778 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[@userId='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a0."Name"
+FROM "AspNetUserRoles" AS a
+INNER JOIN "AspNetRoles" AS a0 ON a."RoleId" = a0."Id"
+WHERE a."UserId" = @userId
+2026-06-23 19:03:08.779 -05:00 [INF] Executing ViewResult, running view Create.
+2026-06-23 19:03:08.786 -05:00 [INF] Executed ViewResult - view Create executed in 7.2126ms.
+2026-06-23 19:03:08.786 -05:00 [INF] Executed action AssesmentReservas.API.Controllers.BookingsController.Create (AssesmentReservas.API) in 21.1387ms
+2026-06-23 19:03:08.786 -05:00 [INF] Executed endpoint 'AssesmentReservas.API.Controllers.BookingsController.Create (AssesmentReservas.API)'
+2026-06-23 19:03:08.786 -05:00 [INF] HTTP GET /Bookings/Create responded 200 in 28.0223 ms
+2026-06-23 19:03:08.786 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5152/Bookings/Create?propertyId=3 - 200 null text/html; charset=utf-8 28.3658ms
+2026-06-23 19:03:08.796 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5152/lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js - null null
+2026-06-23 19:03:08.796 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5152/lib/jquery-validation/dist/jquery.validate.min.js - null null
+2026-06-23 19:03:08.797 -05:00 [INF] Executing endpoint 'Microsoft.AspNetCore.Routing.RouteEndpoint'
+2026-06-23 19:03:08.797 -05:00 [INF] Executing endpoint 'Microsoft.AspNetCore.Routing.RouteEndpoint'
+2026-06-23 19:03:08.797 -05:00 [INF] Sending file. Request path: 'lib/jquery-validation/dist/jquery.validate.min.js'. Physical path: '/home/cohorte6/Desktop/AssesmentReservas/AssesmentReservas.API/obj/Debug/net10.0/compressed/r4l46yo857-{0}-ag7o75518u-ag7o75518u.gz'
+2026-06-23 19:03:08.797 -05:00 [INF] Sending file. Request path: 'lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js'. Physical path: '/home/cohorte6/Desktop/AssesmentReservas/AssesmentReservas.API/obj/Debug/net10.0/compressed/xytiqjfy45-{0}-4v8eqarkd7-4v8eqarkd7.gz'
+2026-06-23 19:03:08.797 -05:00 [INF] Executed endpoint 'Microsoft.AspNetCore.Routing.RouteEndpoint'
+2026-06-23 19:03:08.797 -05:00 [INF] Executed endpoint 'Microsoft.AspNetCore.Routing.RouteEndpoint'
+2026-06-23 19:03:08.797 -05:00 [INF] HTTP GET /lib/jquery-validation/dist/jquery.validate.min.js responded 200 in 1.1097 ms
+2026-06-23 19:03:08.797 -05:00 [INF] HTTP GET /lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js responded 200 in 1.2570 ms
+2026-06-23 19:03:08.798 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5152/lib/jquery-validation/dist/jquery.validate.min.js - 200 25341 text/javascript 1.5389ms
+2026-06-23 19:03:08.798 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5152/lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js - 200 5857 text/javascript 1.597ms
+2026-06-23 19:03:10.877 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5152/Kyc - null null
+2026-06-23 19:03:10.878 -05:00 [INF] Executing endpoint 'AssesmentReservas.API.Controllers.KycController.Index (AssesmentReservas.API)'
+2026-06-23 19:03:10.882 -05:00 [INF] Route matched with {action = "Index", controller = "Kyc"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index(System.Threading.CancellationToken) on controller AssesmentReservas.API.Controllers.KycController (AssesmentReservas.API).
+2026-06-23 19:03:10.891 -05:00 [INF] Executed DbCommand (1ms) [Parameters=[@userId='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."CreatedAt", a."Email", a."EmailConfirmed", a."FirstName", a."IsKycVerified", a."LastName", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."SecurityStamp", a."TwoFactorEnabled", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."Id" = @userId
+LIMIT 1
+2026-06-23 19:03:10.898 -05:00 [INF] Executed DbCommand (1ms) [Parameters=[@userId='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT k."Id", k."BirthDate", k."CreatedAt", k."DocumentNumber", k."DocumentObjectKey", k."FirstName", k."LastName", k."ProcessedAt", k."RejectionReason", k."Status", k."UserId"
+FROM "KycVerifications" AS k
+WHERE k."UserId" = @userId
+ORDER BY k."CreatedAt" DESC
+LIMIT 1
+2026-06-23 19:03:10.899 -05:00 [INF] Executing ViewResult, running view Index.
+2026-06-23 19:03:10.906 -05:00 [INF] Executed ViewResult - view Index executed in 7.9145ms.
+2026-06-23 19:03:10.907 -05:00 [INF] Executed action AssesmentReservas.API.Controllers.KycController.Index (AssesmentReservas.API) in 23.9091ms
+2026-06-23 19:03:10.907 -05:00 [INF] Executed endpoint 'AssesmentReservas.API.Controllers.KycController.Index (AssesmentReservas.API)'
+2026-06-23 19:03:10.907 -05:00 [INF] HTTP GET /Kyc responded 200 in 29.0708 ms
+2026-06-23 19:03:10.907 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5152/Kyc - 200 null text/html; charset=utf-8 29.4021ms
+2026-06-23 19:03:10.915 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5152/lib/jquery-validation/dist/jquery.validate.min.js - null null
+2026-06-23 19:03:10.915 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5152/lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js - null null
+2026-06-23 19:03:10.916 -05:00 [INF] Executing endpoint 'Microsoft.AspNetCore.Routing.RouteEndpoint'
+2026-06-23 19:03:10.916 -05:00 [INF] Executing endpoint 'Microsoft.AspNetCore.Routing.RouteEndpoint'
+2026-06-23 19:03:10.916 -05:00 [INF] Sending file. Request path: 'lib/jquery-validation/dist/jquery.validate.min.js'. Physical path: '/home/cohorte6/Desktop/AssesmentReservas/AssesmentReservas.API/obj/Debug/net10.0/compressed/r4l46yo857-{0}-ag7o75518u-ag7o75518u.gz'
+2026-06-23 19:03:10.916 -05:00 [INF] Sending file. Request path: 'lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js'. Physical path: '/home/cohorte6/Desktop/AssesmentReservas/AssesmentReservas.API/obj/Debug/net10.0/compressed/xytiqjfy45-{0}-4v8eqarkd7-4v8eqarkd7.gz'
+2026-06-23 19:03:10.916 -05:00 [INF] Executed endpoint 'Microsoft.AspNetCore.Routing.RouteEndpoint'
+2026-06-23 19:03:10.916 -05:00 [INF] Executed endpoint 'Microsoft.AspNetCore.Routing.RouteEndpoint'
+2026-06-23 19:03:10.917 -05:00 [INF] HTTP GET /lib/jquery-validation/dist/jquery.validate.min.js responded 200 in 1.2140 ms
+2026-06-23 19:03:10.917 -05:00 [INF] HTTP GET /lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js responded 200 in 1.1975 ms
+2026-06-23 19:03:10.917 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5152/lib/jquery-validation/dist/jquery.validate.min.js - 200 25341 text/javascript 1.5061ms
+2026-06-23 19:03:10.917 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5152/lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js - 200 5857 text/javascript 1.5785ms
+2026-06-23 19:03:17.119 -05:00 [INF] Request starting HTTP/1.1 POST http://localhost:5152/Kyc/Upload - multipart/form-data; boundary=----WebKitFormBoundaryYNBKwnQgBbNbnIya 33525
+2026-06-23 19:03:17.120 -05:00 [INF] Executing endpoint 'AssesmentReservas.API.Controllers.KycController.Upload (AssesmentReservas.API)'
+2026-06-23 19:03:17.125 -05:00 [INF] Route matched with {action = "Upload", controller = "Kyc"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Upload(Microsoft.AspNetCore.Http.IFormFile, System.Threading.CancellationToken) on controller AssesmentReservas.API.Controllers.KycController (AssesmentReservas.API).
+2026-06-23 19:03:17.142 -05:00 [INF] Executed DbCommand (1ms) [Parameters=[@userId='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."CreatedAt", a."Email", a."EmailConfirmed", a."FirstName", a."IsKycVerified", a."LastName", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."SecurityStamp", a."TwoFactorEnabled", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."Id" = @userId
+LIMIT 1
+2026-06-23 19:03:17.372 -05:00 [INF] Objeto subido a kyc-documents/2026/06/a7104476c3064516bd7b8395f18cc5a2.enc
+2026-06-23 19:03:17.396 -05:00 [ERR] Falló el OCR de Tesseract (TessData: /usr/share/tesseract-ocr/5/tessdata, Langs: spa+eng)
+System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation.
+ ---> System.DllNotFoundException: Failed to find library "libleptonica-1.82.0.so" for platform x64.
+   at InteropDotNet.LibraryLoader.LoadLibrary(String fileName, String platformName)
+   at InteropRuntimeImplementer.LeptonicaApiSignaturesInstance.LeptonicaApiSignaturesImplementation..ctor(LibraryLoader loader)
+   at System.RuntimeMethodHandle.InvokeMethod(ObjectHandleOnStack target, Void** arguments, ObjectHandleOnStack sig, BOOL isConstructor, ObjectHandleOnStack result)
+   at System.RuntimeMethodHandle.InvokeMethod(ObjectHandleOnStack target, Void** arguments, ObjectHandleOnStack sig, BOOL isConstructor, ObjectHandleOnStack result)
+   at System.Reflection.MethodBaseInvoker.InterpretedInvoke_Constructor(Object obj, IntPtr* args)
+   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)
+   --- End of inner exception stack trace ---
+   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)
+   at System.Reflection.RuntimeConstructorInfo.Invoke(BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at System.RuntimeType.CreateInstanceImpl(BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture)
+   at InteropDotNet.InteropRuntimeImplementer.CreateInstance[T]()
+   at Tesseract.Interop.LeptonicaApi.Initialize()
+   at Tesseract.Interop.TessApi.Initialize()
+   at Tesseract.Interop.TessApi.get_Native()
+   at Tesseract.TesseractEngine..ctor(String datapath, String language, EngineMode engineMode, IEnumerable`1 configFiles, IDictionary`2 initialOptions, Boolean setOnlyNonDebugVariables)
+   at Tesseract.TesseractEngine..ctor(String datapath, String language, EngineMode engineMode)
+   at AssesmentReservas.API.Services.Infrastructure.TesseractOcrService.ExtractText(Byte[] imageBytes) in /home/cohorte6/Desktop/AssesmentReservas/AssesmentReservas.API/Services/Infrastructure/TesseractOcrService.cs:line 25
+2026-06-23 19:03:17.441 -05:00 [INF] Executed DbCommand (2ms) [Parameters=[@p0='?' (DbType = Date), @p1='?' (DbType = DateTime), @p2='?', @p3='?', @p4='?', @p5='?', @p6='?' (DbType = DateTime), @p7='?', @p8='?' (DbType = Int32), @p9='?'], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "KycVerifications" ("BirthDate", "CreatedAt", "DocumentNumber", "DocumentObjectKey", "FirstName", "LastName", "ProcessedAt", "RejectionReason", "Status", "UserId")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9)
+RETURNING "Id";
+2026-06-23 19:03:17.457 -05:00 [INF] Executed DbCommand (1ms) [Parameters=[@p1='?' (DbType = Int32), @p0='?'], CommandType='"Text"', CommandTimeout='30']
+UPDATE "KycVerifications" SET "DocumentObjectKey" = @p0
+WHERE "Id" = @p1;
+2026-06-23 19:03:17.478 -05:00 [INF] Executed DbCommand (1ms) [Parameters=[@p0='?' (DbType = DateTime), @p1='?' (DbType = Boolean), @p2='?', @p3='?', @p4='?' (DbType = Int32), @p5='?'], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Notifications" ("CreatedAt", "IsRead", "Message", "Title", "Type", "UserId")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5)
+RETURNING "Id";
+2026-06-23 19:03:17.479 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[@userId='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."CreatedAt", a."Email", a."EmailConfirmed", a."FirstName", a."IsKycVerified", a."LastName", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."SecurityStamp", a."TwoFactorEnabled", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."Id" = @userId
+LIMIT 1
+2026-06-23 19:03:17.572 -05:00 [INF] Correo enviado a lucas.pvp.16@gmail.com: Validación de identidad rechazada
+2026-06-23 19:03:17.573 -05:00 [INF] KYC de 71e06736-cbdf-4069-9bb7-8d0a9e8d4ad0 -> "Rejected"
+2026-06-23 19:03:17.574 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[@userId='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."CreatedAt", a."Email", a."EmailConfirmed", a."FirstName", a."IsKycVerified", a."LastName", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."SecurityStamp", a."TwoFactorEnabled", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."Id" = @userId
+LIMIT 1
+2026-06-23 19:03:17.574 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[@userId='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT k."Id", k."BirthDate", k."CreatedAt", k."DocumentNumber", k."DocumentObjectKey", k."FirstName", k."LastName", k."ProcessedAt", k."RejectionReason", k."Status", k."UserId"
+FROM "KycVerifications" AS k
+WHERE k."UserId" = @userId
+ORDER BY k."CreatedAt" DESC
+LIMIT 1
+2026-06-23 19:03:17.575 -05:00 [INF] Executing ViewResult, running view Index.
+2026-06-23 19:03:17.576 -05:00 [INF] Executed ViewResult - view Index executed in 1.3011ms.
+2026-06-23 19:03:17.577 -05:00 [INF] Executed action AssesmentReservas.API.Controllers.KycController.Upload (AssesmentReservas.API) in 451.0351ms
+2026-06-23 19:03:17.577 -05:00 [INF] Executed endpoint 'AssesmentReservas.API.Controllers.KycController.Upload (AssesmentReservas.API)'
+2026-06-23 19:03:17.577 -05:00 [INF] HTTP POST /Kyc/Upload responded 200 in 457.1990 ms
+2026-06-23 19:03:17.577 -05:00 [INF] Request finished HTTP/1.1 POST http://localhost:5152/Kyc/Upload - 200 null text/html; charset=utf-8 457.8233ms
+2026-06-23 19:03:17.584 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5152/lib/jquery-validation/dist/jquery.validate.min.js - null null
+2026-06-23 19:03:17.585 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5152/lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js - null null
+2026-06-23 19:03:17.585 -05:00 [INF] Executing endpoint 'Microsoft.AspNetCore.Routing.RouteEndpoint'
+2026-06-23 19:03:17.585 -05:00 [INF] Executing endpoint 'Microsoft.AspNetCore.Routing.RouteEndpoint'
+2026-06-23 19:03:17.586 -05:00 [INF] Sending file. Request path: 'lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js'. Physical path: '/home/cohorte6/Desktop/AssesmentReservas/AssesmentReservas.API/obj/Debug/net10.0/compressed/xytiqjfy45-{0}-4v8eqarkd7-4v8eqarkd7.gz'
+2026-06-23 19:03:17.586 -05:00 [INF] Sending file. Request path: 'lib/jquery-validation/dist/jquery.validate.min.js'. Physical path: '/home/cohorte6/Desktop/AssesmentReservas/AssesmentReservas.API/obj/Debug/net10.0/compressed/r4l46yo857-{0}-ag7o75518u-ag7o75518u.gz'
+2026-06-23 19:03:17.586 -05:00 [INF] Executed endpoint 'Microsoft.AspNetCore.Routing.RouteEndpoint'
+2026-06-23 19:03:17.586 -05:00 [INF] Executed endpoint 'Microsoft.AspNetCore.Routing.RouteEndpoint'
+2026-06-23 19:03:17.586 -05:00 [INF] HTTP GET /lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js responded 200 in 1.1235 ms
+2026-06-23 19:03:17.586 -05:00 [INF] HTTP GET /lib/jquery-validation/dist/jquery.validate.min.js responded 200 in 1.3374 ms
+2026-06-23 19:03:17.586 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5152/lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js - 200 5857 text/javascript 1.359ms
+2026-06-23 19:03:17.586 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5152/lib/jquery-validation/dist/jquery.validate.min.js - 200 25341 text/javascript 1.7166ms
+2026-06-23 19:03:29.776 -05:00 [INF] Request starting HTTP/1.1 POST http://localhost:5152/Kyc/Upload - multipart/form-data; boundary=----WebKitFormBoundary2Q2zVPrLetcyuAOB 26719
+2026-06-23 19:03:29.778 -05:00 [INF] Executing endpoint 'AssesmentReservas.API.Controllers.KycController.Upload (AssesmentReservas.API)'
+2026-06-23 19:03:29.778 -05:00 [INF] Route matched with {action = "Upload", controller = "Kyc"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Upload(Microsoft.AspNetCore.Http.IFormFile, System.Threading.CancellationToken) on controller AssesmentReservas.API.Controllers.KycController (AssesmentReservas.API).
+2026-06-23 19:03:29.782 -05:00 [INF] Executed DbCommand (1ms) [Parameters=[@userId='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."CreatedAt", a."Email", a."EmailConfirmed", a."FirstName", a."IsKycVerified", a."LastName", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."SecurityStamp", a."TwoFactorEnabled", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."Id" = @userId
+LIMIT 1
+2026-06-23 19:03:29.806 -05:00 [INF] Objeto subido a kyc-documents/2026/06/636db0ef2ee545aaaa515eaa71570860.enc
+2026-06-23 19:03:29.818 -05:00 [ERR] Falló el OCR de Tesseract (TessData: /usr/share/tesseract-ocr/5/tessdata, Langs: spa+eng)
+System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation.
+ ---> System.DllNotFoundException: Failed to find library "libleptonica-1.82.0.so" for platform x64.
+   at InteropDotNet.LibraryLoader.LoadLibrary(String fileName, String platformName)
+   at InteropRuntimeImplementer.LeptonicaApiSignaturesInstance.LeptonicaApiSignaturesImplementation..ctor(LibraryLoader loader)
+   at System.RuntimeMethodHandle.InvokeMethod(ObjectHandleOnStack target, Void** arguments, ObjectHandleOnStack sig, BOOL isConstructor, ObjectHandleOnStack result)
+   at System.RuntimeMethodHandle.InvokeMethod(ObjectHandleOnStack target, Void** arguments, ObjectHandleOnStack sig, BOOL isConstructor, ObjectHandleOnStack result)
+   at System.Reflection.MethodBaseInvoker.InterpretedInvoke_Constructor(Object obj, IntPtr* args)
+   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)
+   --- End of inner exception stack trace ---
+   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)
+   at System.Reflection.RuntimeConstructorInfo.Invoke(BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at System.RuntimeType.CreateInstanceImpl(BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture)
+   at InteropDotNet.InteropRuntimeImplementer.CreateInstance[T]()
+   at Tesseract.Interop.LeptonicaApi.Initialize()
+   at Tesseract.Interop.TessApi.Initialize()
+   at Tesseract.Interop.TessApi.get_Native()
+   at Tesseract.TesseractEngine..ctor(String datapath, String language, EngineMode engineMode, IEnumerable`1 configFiles, IDictionary`2 initialOptions, Boolean setOnlyNonDebugVariables)
+   at Tesseract.TesseractEngine..ctor(String datapath, String language, EngineMode engineMode)
+   at AssesmentReservas.API.Services.Infrastructure.TesseractOcrService.ExtractText(Byte[] imageBytes) in /home/cohorte6/Desktop/AssesmentReservas/AssesmentReservas.API/Services/Infrastructure/TesseractOcrService.cs:line 25
+2026-06-23 19:03:29.821 -05:00 [INF] Executed DbCommand (1ms) [Parameters=[@p0='?' (DbType = Date), @p1='?' (DbType = DateTime), @p2='?', @p3='?', @p4='?', @p5='?', @p6='?' (DbType = DateTime), @p7='?', @p8='?' (DbType = Int32), @p9='?'], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "KycVerifications" ("BirthDate", "CreatedAt", "DocumentNumber", "DocumentObjectKey", "FirstName", "LastName", "ProcessedAt", "RejectionReason", "Status", "UserId")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9)
+RETURNING "Id";
+2026-06-23 19:03:29.824 -05:00 [INF] Executed DbCommand (1ms) [Parameters=[@p1='?' (DbType = Int32), @p0='?'], CommandType='"Text"', CommandTimeout='30']
+UPDATE "KycVerifications" SET "DocumentObjectKey" = @p0
+WHERE "Id" = @p1;
+2026-06-23 19:03:29.827 -05:00 [INF] Executed DbCommand (1ms) [Parameters=[@p0='?' (DbType = DateTime), @p1='?' (DbType = Boolean), @p2='?', @p3='?', @p4='?' (DbType = Int32), @p5='?'], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Notifications" ("CreatedAt", "IsRead", "Message", "Title", "Type", "UserId")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5)
+RETURNING "Id";
+2026-06-23 19:03:29.828 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[@userId='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."CreatedAt", a."Email", a."EmailConfirmed", a."FirstName", a."IsKycVerified", a."LastName", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."SecurityStamp", a."TwoFactorEnabled", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."Id" = @userId
+LIMIT 1
+2026-06-23 19:03:29.830 -05:00 [INF] Correo enviado a lucas.pvp.16@gmail.com: Validación de identidad rechazada
+2026-06-23 19:03:29.830 -05:00 [INF] KYC de 71e06736-cbdf-4069-9bb7-8d0a9e8d4ad0 -> "Rejected"
+2026-06-23 19:03:29.831 -05:00 [INF] Executed DbCommand (1ms) [Parameters=[@userId='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."CreatedAt", a."Email", a."EmailConfirmed", a."FirstName", a."IsKycVerified", a."LastName", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."SecurityStamp", a."TwoFactorEnabled", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."Id" = @userId
+LIMIT 1
+2026-06-23 19:03:29.832 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[@userId='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT k."Id", k."BirthDate", k."CreatedAt", k."DocumentNumber", k."DocumentObjectKey", k."FirstName", k."LastName", k."ProcessedAt", k."RejectionReason", k."Status", k."UserId"
+FROM "KycVerifications" AS k
+WHERE k."UserId" = @userId
+ORDER BY k."CreatedAt" DESC
+LIMIT 1
+2026-06-23 19:03:29.832 -05:00 [INF] Executing ViewResult, running view Index.
+2026-06-23 19:03:29.833 -05:00 [INF] Executed ViewResult - view Index executed in 1.3592ms.
+2026-06-23 19:03:29.833 -05:00 [INF] Executed action AssesmentReservas.API.Controllers.KycController.Upload (AssesmentReservas.API) in 55.0765ms
+2026-06-23 19:03:29.833 -05:00 [INF] Executed endpoint 'AssesmentReservas.API.Controllers.KycController.Upload (AssesmentReservas.API)'
+2026-06-23 19:03:29.834 -05:00 [INF] HTTP POST /Kyc/Upload responded 200 in 56.8758 ms
+2026-06-23 19:03:29.834 -05:00 [INF] Request finished HTTP/1.1 POST http://localhost:5152/Kyc/Upload - 200 null text/html; charset=utf-8 57.4552ms
+2026-06-23 19:03:29.843 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5152/lib/jquery-validation/dist/jquery.validate.min.js - null null
+2026-06-23 19:03:29.844 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5152/lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js - null null
+2026-06-23 19:03:29.844 -05:00 [INF] Executing endpoint 'Microsoft.AspNetCore.Routing.RouteEndpoint'
+2026-06-23 19:03:29.845 -05:00 [INF] Sending file. Request path: 'lib/jquery-validation/dist/jquery.validate.min.js'. Physical path: '/home/cohorte6/Desktop/AssesmentReservas/AssesmentReservas.API/obj/Debug/net10.0/compressed/r4l46yo857-{0}-ag7o75518u-ag7o75518u.gz'
+2026-06-23 19:03:29.845 -05:00 [INF] Executing endpoint 'Microsoft.AspNetCore.Routing.RouteEndpoint'
+2026-06-23 19:03:29.845 -05:00 [INF] Executed endpoint 'Microsoft.AspNetCore.Routing.RouteEndpoint'
+2026-06-23 19:03:29.845 -05:00 [INF] HTTP GET /lib/jquery-validation/dist/jquery.validate.min.js responded 200 in 1.3346 ms
+2026-06-23 19:03:29.845 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5152/lib/jquery-validation/dist/jquery.validate.min.js - 200 25341 text/javascript 1.6463ms
+2026-06-23 19:03:29.845 -05:00 [INF] Sending file. Request path: 'lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js'. Physical path: '/home/cohorte6/Desktop/AssesmentReservas/AssesmentReservas.API/obj/Debug/net10.0/compressed/xytiqjfy45-{0}-4v8eqarkd7-4v8eqarkd7.gz'
+2026-06-23 19:03:29.845 -05:00 [INF] Executed endpoint 'Microsoft.AspNetCore.Routing.RouteEndpoint'
+2026-06-23 19:03:29.845 -05:00 [INF] HTTP GET /lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js responded 200 in 1.1268 ms
+2026-06-23 19:03:29.845 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5152/lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js - 200 5857 text/javascript 1.4273ms
+2026-06-23 19:03:41.590 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5152/Catalog - null null
+2026-06-23 19:03:41.591 -05:00 [INF] Executing endpoint 'AssesmentReservas.API.Controllers.CatalogController.Index (AssesmentReservas.API)'
+2026-06-23 19:03:41.591 -05:00 [INF] Route matched with {action = "Index", controller = "Catalog"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index(AssesmentReservas.API.DTOs.Properties.PropertySearchDto, System.Threading.CancellationToken) on controller AssesmentReservas.API.Controllers.CatalogController (AssesmentReservas.API).
+2026-06-23 19:03:41.592 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT count(*)::int
+FROM "Properties" AS p
+WHERE p."IsActive"
+2026-06-23 19:03:41.593 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[@p1='?' (DbType = Int32), @p='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT p."Id", p."Title", p."City", p."Country", p."PricePerNight", p."MaxGuests", (
+    SELECT p0."ObjectKey"
+    FROM "PropertyImages" AS p0
+    WHERE p."Id" = p0."PropertyId"
+    ORDER BY p0."IsCover" DESC
+    LIMIT 1) AS "CoverImageUrl"
+FROM "Properties" AS p
+WHERE p."IsActive"
+ORDER BY p."CreatedAt" DESC
+LIMIT @p1 OFFSET @p
+2026-06-23 19:03:41.594 -05:00 [INF] Executing ViewResult, running view Index.
+2026-06-23 19:03:41.594 -05:00 [INF] Executed ViewResult - view Index executed in 0.946ms.
+2026-06-23 19:03:41.594 -05:00 [INF] Executed action AssesmentReservas.API.Controllers.CatalogController.Index (AssesmentReservas.API) in 3.6326ms
+2026-06-23 19:03:41.595 -05:00 [INF] Executed endpoint 'AssesmentReservas.API.Controllers.CatalogController.Index (AssesmentReservas.API)'
+2026-06-23 19:03:41.595 -05:00 [INF] HTTP GET /Catalog responded 200 in 4.5363 ms
+2026-06-23 19:03:41.595 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5152/Catalog - 200 null text/html; charset=utf-8 4.8594ms
+2026-06-23 19:03:50.165 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5152/Bookings - null null
+2026-06-23 19:03:50.166 -05:00 [INF] Executing endpoint 'AssesmentReservas.API.Controllers.BookingsController.Index (AssesmentReservas.API)'
+2026-06-23 19:03:50.171 -05:00 [INF] Route matched with {action = "Index", controller = "Bookings"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index(System.Threading.CancellationToken) on controller AssesmentReservas.API.Controllers.BookingsController (AssesmentReservas.API).
+2026-06-23 19:03:50.179 -05:00 [INF] Executed DbCommand (1ms) [Parameters=[@guestId='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT b."Id", b."CancelledAt", b."CheckInDate", b."CheckInReminderSentAt", b."CheckOutDate", b."CheckOutReminderSentAt", b."ConfirmedAt", b."CreatedAt", b."GuestId", b."PricePerNight", b."PropertyId", b."Status", b."TotalPrice", p."Id", p."AddressLine", p."Bathrooms", p."Bedrooms", p."City", p."Country", p."CreatedAt", p."Description", p."IsActive", p."Latitude", p."Longitude", p."MaxGuests", p."OwnerId", p."PricePerNight", p."Title", p."UpdatedAt"
+FROM "Bookings" AS b
+INNER JOIN "Properties" AS p ON b."PropertyId" = p."Id"
+WHERE b."GuestId" = @guestId
+ORDER BY b."CreatedAt" DESC
+2026-06-23 19:03:50.181 -05:00 [INF] Executing ViewResult, running view Index.
+2026-06-23 19:03:50.186 -05:00 [INF] Executed ViewResult - view Index executed in 5.3742ms.
+2026-06-23 19:03:50.186 -05:00 [INF] Executed action AssesmentReservas.API.Controllers.BookingsController.Index (AssesmentReservas.API) in 14.9927ms
+2026-06-23 19:03:50.186 -05:00 [INF] Executed endpoint 'AssesmentReservas.API.Controllers.BookingsController.Index (AssesmentReservas.API)'
+2026-06-23 19:03:50.186 -05:00 [INF] HTTP GET /Bookings responded 200 in 20.5011 ms
+2026-06-23 19:03:50.186 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5152/Bookings - 200 null text/html; charset=utf-8 20.79ms
+2026-06-23 19:03:51.510 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5152/Account/Profile - null null
+2026-06-23 19:03:51.511 -05:00 [INF] Executing endpoint 'AssesmentReservas.API.Controllers.AccountController.Profile (AssesmentReservas.API)'
+2026-06-23 19:03:51.514 -05:00 [INF] Route matched with {action = "Profile", controller = "Account"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Profile() on controller AssesmentReservas.API.Controllers.AccountController (AssesmentReservas.API).
+2026-06-23 19:03:51.516 -05:00 [INF] Executed DbCommand (1ms) [Parameters=[@p='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."CreatedAt", a."Email", a."EmailConfirmed", a."FirstName", a."IsKycVerified", a."LastName", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."SecurityStamp", a."TwoFactorEnabled", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."Id" = @p
+LIMIT 1
+2026-06-23 19:03:51.517 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[@userId='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a0."Name"
+FROM "AspNetUserRoles" AS a
+INNER JOIN "AspNetRoles" AS a0 ON a."RoleId" = a0."Id"
+WHERE a."UserId" = @userId
+2026-06-23 19:03:51.518 -05:00 [INF] Executing ViewResult, running view Profile.
+2026-06-23 19:03:51.526 -05:00 [INF] Executed ViewResult - view Profile executed in 8.6164ms.
+2026-06-23 19:03:51.526 -05:00 [INF] Executed action AssesmentReservas.API.Controllers.AccountController.Profile (AssesmentReservas.API) in 11.7573ms
+2026-06-23 19:03:51.526 -05:00 [INF] Executed endpoint 'AssesmentReservas.API.Controllers.AccountController.Profile (AssesmentReservas.API)'
+2026-06-23 19:03:51.526 -05:00 [INF] HTTP GET /Account/Profile responded 200 in 16.2051 ms
+2026-06-23 19:03:51.526 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5152/Account/Profile - 200 null text/html; charset=utf-8 16.4786ms
+2026-06-23 19:03:53.885 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5152/Kyc - null null
+2026-06-23 19:03:53.886 -05:00 [INF] Executing endpoint 'AssesmentReservas.API.Controllers.KycController.Index (AssesmentReservas.API)'
+2026-06-23 19:03:53.886 -05:00 [INF] Route matched with {action = "Index", controller = "Kyc"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index(System.Threading.CancellationToken) on controller AssesmentReservas.API.Controllers.KycController (AssesmentReservas.API).
+2026-06-23 19:03:53.887 -05:00 [INF] Executed DbCommand (1ms) [Parameters=[@userId='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."CreatedAt", a."Email", a."EmailConfirmed", a."FirstName", a."IsKycVerified", a."LastName", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."SecurityStamp", a."TwoFactorEnabled", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."Id" = @userId
+LIMIT 1
+2026-06-23 19:03:53.888 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[@userId='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT k."Id", k."BirthDate", k."CreatedAt", k."DocumentNumber", k."DocumentObjectKey", k."FirstName", k."LastName", k."ProcessedAt", k."RejectionReason", k."Status", k."UserId"
+FROM "KycVerifications" AS k
+WHERE k."UserId" = @userId
+ORDER BY k."CreatedAt" DESC
+LIMIT 1
+2026-06-23 19:03:53.889 -05:00 [INF] Executing ViewResult, running view Index.
+2026-06-23 19:03:53.889 -05:00 [INF] Executed ViewResult - view Index executed in 0.6924ms.
+2026-06-23 19:03:53.889 -05:00 [INF] Executed action AssesmentReservas.API.Controllers.KycController.Index (AssesmentReservas.API) in 3.1794ms
+2026-06-23 19:03:53.890 -05:00 [INF] Executed endpoint 'AssesmentReservas.API.Controllers.KycController.Index (AssesmentReservas.API)'
+2026-06-23 19:03:53.890 -05:00 [INF] HTTP GET /Kyc responded 200 in 4.1397 ms
+2026-06-23 19:03:53.890 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5152/Kyc - 200 null text/html; charset=utf-8 4.4043ms
+2026-06-23 19:03:53.897 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5152/lib/jquery-validation/dist/jquery.validate.min.js - null null
+2026-06-23 19:03:53.898 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5152/lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js - null null
+2026-06-23 19:03:53.898 -05:00 [INF] Executing endpoint 'Microsoft.AspNetCore.Routing.RouteEndpoint'
+2026-06-23 19:03:53.898 -05:00 [INF] Executing endpoint 'Microsoft.AspNetCore.Routing.RouteEndpoint'
+2026-06-23 19:03:53.898 -05:00 [INF] Sending file. Request path: 'lib/jquery-validation/dist/jquery.validate.min.js'. Physical path: '/home/cohorte6/Desktop/AssesmentReservas/AssesmentReservas.API/obj/Debug/net10.0/compressed/r4l46yo857-{0}-ag7o75518u-ag7o75518u.gz'
+2026-06-23 19:03:53.898 -05:00 [INF] Sending file. Request path: 'lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js'. Physical path: '/home/cohorte6/Desktop/AssesmentReservas/AssesmentReservas.API/obj/Debug/net10.0/compressed/xytiqjfy45-{0}-4v8eqarkd7-4v8eqarkd7.gz'
+2026-06-23 19:03:53.898 -05:00 [INF] Executed endpoint 'Microsoft.AspNetCore.Routing.RouteEndpoint'
+2026-06-23 19:03:53.898 -05:00 [INF] Executed endpoint 'Microsoft.AspNetCore.Routing.RouteEndpoint'
+2026-06-23 19:03:53.898 -05:00 [INF] HTTP GET /lib/jquery-validation/dist/jquery.validate.min.js responded 200 in 0.9761 ms
+2026-06-23 19:03:53.899 -05:00 [INF] HTTP GET /lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js responded 200 in 0.8944 ms
+2026-06-23 19:03:53.899 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5152/lib/jquery-validation/dist/jquery.validate.min.js - 200 25341 text/javascript 1.2672ms
+2026-06-23 19:03:53.899 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5152/lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js - 200 5857 text/javascript 1.1864ms
+2026-06-23 19:03:59.365 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5152/Account/Profile - null null
+2026-06-23 19:03:59.366 -05:00 [INF] Executing endpoint 'AssesmentReservas.API.Controllers.AccountController.Profile (AssesmentReservas.API)'
+2026-06-23 19:03:59.366 -05:00 [INF] Route matched with {action = "Profile", controller = "Account"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Profile() on controller AssesmentReservas.API.Controllers.AccountController (AssesmentReservas.API).
+2026-06-23 19:03:59.367 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[@p='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."CreatedAt", a."Email", a."EmailConfirmed", a."FirstName", a."IsKycVerified", a."LastName", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."SecurityStamp", a."TwoFactorEnabled", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."Id" = @p
+LIMIT 1
+2026-06-23 19:03:59.368 -05:00 [INF] Executed DbCommand (1ms) [Parameters=[@userId='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a0."Name"
+FROM "AspNetUserRoles" AS a
+INNER JOIN "AspNetRoles" AS a0 ON a."RoleId" = a0."Id"
+WHERE a."UserId" = @userId
+2026-06-23 19:03:59.368 -05:00 [INF] Executing ViewResult, running view Profile.
+2026-06-23 19:03:59.369 -05:00 [INF] Executed ViewResult - view Profile executed in 1.0352ms.
+2026-06-23 19:03:59.370 -05:00 [INF] Executed action AssesmentReservas.API.Controllers.AccountController.Profile (AssesmentReservas.API) in 3.5401ms
+2026-06-23 19:03:59.370 -05:00 [INF] Executed endpoint 'AssesmentReservas.API.Controllers.AccountController.Profile (AssesmentReservas.API)'
+2026-06-23 19:03:59.370 -05:00 [INF] HTTP GET /Account/Profile responded 200 in 4.3573 ms
+2026-06-23 19:03:59.370 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5152/Account/Profile - 200 null text/html; charset=utf-8 4.6674ms
+2026-06-23 19:04:04.661 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5152/Catalog - null null
+2026-06-23 19:04:04.662 -05:00 [INF] Executing endpoint 'AssesmentReservas.API.Controllers.CatalogController.Index (AssesmentReservas.API)'
+2026-06-23 19:04:04.662 -05:00 [INF] Route matched with {action = "Index", controller = "Catalog"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index(AssesmentReservas.API.DTOs.Properties.PropertySearchDto, System.Threading.CancellationToken) on controller AssesmentReservas.API.Controllers.CatalogController (AssesmentReservas.API).
+2026-06-23 19:04:04.663 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT count(*)::int
+FROM "Properties" AS p
+WHERE p."IsActive"
+2026-06-23 19:04:04.664 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[@p1='?' (DbType = Int32), @p='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT p."Id", p."Title", p."City", p."Country", p."PricePerNight", p."MaxGuests", (
+    SELECT p0."ObjectKey"
+    FROM "PropertyImages" AS p0
+    WHERE p."Id" = p0."PropertyId"
+    ORDER BY p0."IsCover" DESC
+    LIMIT 1) AS "CoverImageUrl"
+FROM "Properties" AS p
+WHERE p."IsActive"
+ORDER BY p."CreatedAt" DESC
+LIMIT @p1 OFFSET @p
+2026-06-23 19:04:04.664 -05:00 [INF] Executing ViewResult, running view Index.
+2026-06-23 19:04:04.665 -05:00 [INF] Executed ViewResult - view Index executed in 0.8982ms.
+2026-06-23 19:04:04.665 -05:00 [INF] Executed action AssesmentReservas.API.Controllers.CatalogController.Index (AssesmentReservas.API) in 2.9928ms
+2026-06-23 19:04:04.665 -05:00 [INF] Executed endpoint 'AssesmentReservas.API.Controllers.CatalogController.Index (AssesmentReservas.API)'
+2026-06-23 19:04:04.665 -05:00 [INF] HTTP GET /Catalog responded 200 in 3.7573 ms
+2026-06-23 19:04:04.665 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5152/Catalog - 200 null text/html; charset=utf-8 4.0521ms
+2026-06-23 19:07:45.019 -05:00 [INF] Application is shutting down...

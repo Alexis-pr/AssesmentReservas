@@ -1,0 +1,123 @@
+is_global = true
+build_property.TargetFramework = net10.0
+build_property.TargetFramework = net10.0
+build_property.TargetPlatformMinVersion = 
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.TargetFrameworkIdentifier = .NETCoreApp
+build_property.TargetFrameworkVersion = v10.0
+build_property.RootNamespace = AssesmentReservas.API
+build_property.RootNamespace = AssesmentReservas.API
+build_property.ProjectDir = /home/cohorte6/Desktop/AssesmentReservas/AssesmentReservas.API/
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 9.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = /home/cohorte6/Desktop/AssesmentReservas/AssesmentReservas.API
+build_property._RazorSourceGeneratorDebug = 
+build_property.EffectiveAnalysisLevelStyle = 10.0
+build_property.EnableCodeStyleSeverity = 
+
+[/home/cohorte6/Desktop/AssesmentReservas/AssesmentReservas.API/Views/Account/AccessDenied.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWNjb3VudC9BY2Nlc3NEZW5pZWQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/cohorte6/Desktop/AssesmentReservas/AssesmentReservas.API/Views/Account/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWNjb3VudC9Mb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/cohorte6/Desktop/AssesmentReservas/AssesmentReservas.API/Views/Account/Profile.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWNjb3VudC9Qcm9maWxlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/cohorte6/Desktop/AssesmentReservas/AssesmentReservas.API/Views/Account/Register.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWNjb3VudC9SZWdpc3Rlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/cohorte6/Desktop/AssesmentReservas/AssesmentReservas.API/Views/Bookings/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQm9va2luZ3MvQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/cohorte6/Desktop/AssesmentReservas/AssesmentReservas.API/Views/Bookings/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQm9va2luZ3MvSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/cohorte6/Desktop/AssesmentReservas/AssesmentReservas.API/Views/Catalog/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQ2F0YWxvZy9EZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/cohorte6/Desktop/AssesmentReservas/AssesmentReservas.API/Views/Catalog/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQ2F0YWxvZy9JbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/cohorte6/Desktop/AssesmentReservas/AssesmentReservas.API/Views/Favorites/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRmF2b3JpdGVzL0luZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/cohorte6/Desktop/AssesmentReservas/AssesmentReservas.API/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9JbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/cohorte6/Desktop/AssesmentReservas/AssesmentReservas.API/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9Qcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/cohorte6/Desktop/AssesmentReservas/AssesmentReservas.API/Views/Kyc/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvS3ljL0luZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/cohorte6/Desktop/AssesmentReservas/AssesmentReservas.API/Views/Notifications/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvTm90aWZpY2F0aW9ucy9JbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/cohorte6/Desktop/AssesmentReservas/AssesmentReservas.API/Views/Owner/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvT3duZXIvQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/cohorte6/Desktop/AssesmentReservas/AssesmentReservas.API/Views/Owner/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvT3duZXIvSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/cohorte6/Desktop/AssesmentReservas/AssesmentReservas.API/Views/Owner/Manage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvT3duZXIvTWFuYWdlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/cohorte6/Desktop/AssesmentReservas/AssesmentReservas.API/Views/Owner/Properties.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvT3duZXIvUHJvcGVydGllcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/cohorte6/Desktop/AssesmentReservas/AssesmentReservas.API/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL0Vycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/cohorte6/Desktop/AssesmentReservas/AssesmentReservas.API/Views/Shared/_PropertyCard.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19Qcm9wZXJ0eUNhcmQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/cohorte6/Desktop/AssesmentReservas/AssesmentReservas.API/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/cohorte6/Desktop/AssesmentReservas/AssesmentReservas.API/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/cohorte6/Desktop/AssesmentReservas/AssesmentReservas.API/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/cohorte6/Desktop/AssesmentReservas/AssesmentReservas.API/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-jxlyhnbamm

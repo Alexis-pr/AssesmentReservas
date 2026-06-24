@@ -1,0 +1,55 @@
+@model PagedResult<PropertyListItemDto>
+@{
+    ViewData["Title"] = "Mis inmuebles";
+}
+
+<section class="px-margin-mobile py-8 max-w-container-max mx-auto">
+    <div class="flex items-center justify-between mb-6">
+        <h1 class="font-display text-headline-md text-primary">Mis inmuebles</h1>
+        <a href="/Owner/Create" class="bg-primary text-white px-4 py-2 rounded-lg font-semibold text-label-md flex items-center gap-1">
+            <span class="material-symbols-outlined text-[18px]">add</span> Publicar
+        </a>
+    </div>
+
+    @if (TempData["Success"] != null)
+    {
+        <div class="bg-primary-container/30 text-primary rounded-lg p-3 mb-4 text-body-md">@TempData["Success"]</div>
+    }
+    @if (TempData["Error"] != null)
+    {
+        <div class="bg-error-container/40 text-error rounded-lg p-3 mb-4 text-body-md">@TempData["Error"]</div>
+    }
+
+    @if (Model.Items.Count == 0)
+    {
+        <div class="bg-surface-container rounded-2xl p-10 text-center text-on-surface-variant">
+            <span class="material-symbols-outlined text-5xl text-primary/40">apartment</span>
+            <p class="mt-3">Aún no has publicado inmuebles.</p>
+        </div>
+    }
+    else
+    {
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            @foreach (var p in Model.Items)
+            {
+                <a href="/Owner/Manage/@p.Id" class="block bg-surface-container-lowest rounded-xl overflow-hidden border border-outline-variant shadow-sm">
+                    <div class="h-40 bg-surface-container">
+                        @if (!string.IsNullOrEmpty(p.CoverImageUrl))
+                        {
+                            <img class="w-full h-full object-cover" src="@p.CoverImageUrl" alt="@p.Title" />
+                        }
+                        else
+                        {
+                            <div class="w-full h-full flex items-center justify-center text-primary/40"><span class="material-symbols-outlined text-4xl">apartment</span></div>
+                        }
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-title-lg text-on-background truncate">@p.Title</h3>
+                        <p class="text-on-surface-variant text-body-md">@p.City, @p.Country</p>
+                        <p class="text-primary font-bold mt-1">@p.PricePerNight.Cop() <span class="text-label-md text-on-surface-variant font-normal">/ noche</span></p>
+                    </div>
+                </a>
+            }
+        </div>
+    }
+</section>
