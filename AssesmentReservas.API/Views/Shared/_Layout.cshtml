@@ -1,0 +1,140 @@
+@{
+    var isAuth = User.Identity?.IsAuthenticated ?? false;
+    var isOwner = User.IsInRole("Owner");
+    string Active(string ctrl) => string.Equals(ViewContext.RouteData.Values["controller"]?.ToString(), ctrl, StringComparison.OrdinalIgnoreCase)
+        ? "text-primary font-bold" : "text-on-surface-variant";
+}
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>@(ViewData["Title"] != null ? ViewData["Title"] + " | Cosmos Stay" : "Cosmos Stay")</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary-container": "#1e3a8a", "on-primary-container": "#90a8ff",
+              "secondary-container": "#2170e4", "on-secondary-container": "#fefcff",
+              "outline-variant": "#c5c5d3", "on-primary": "#ffffff",
+              "surface-container-high": "#dce9ff", "on-background": "#0b1c30",
+              "on-surface-variant": "#444651", "error-container": "#ffdad6",
+              "surface-bright": "#f8f9ff", "inverse-primary": "#b6c4ff", "on-secondary": "#ffffff",
+              "primary-fixed": "#dce1ff", "primary-fixed-dim": "#b6c4ff", "secondary-fixed": "#d8e2ff",
+              "secondary-fixed-dim": "#adc6ff", "error": "#ba1a1a", "surface": "#f8f9ff",
+              "surface-container": "#e5eeff", "tertiary": "#4b1c00", "secondary": "#0058be",
+              "surface-container-lowest": "#ffffff", "surface-variant": "#d3e4fe",
+              "surface-container-low": "#eff4ff", "surface-container-highest": "#d3e4fe",
+              "on-surface": "#0b1c30", "primary": "#00236f", "outline": "#757682",
+              "background": "#f8f9ff"
+            },
+            borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+            spacing: { "margin-desktop": "40px", "container-max": "1280px", "gutter": "24px", "margin-mobile": "16px" },
+            fontFamily: { "display": ["Inter"], "body-lg": ["Inter"], "body-md": ["Inter"] },
+            fontSize: {
+              "display": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+              "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+              "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+              "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+              "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+              "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+              "title-lg": ["18px", { "lineHeight": "28px", "fontWeight": "600" }],
+              "headline-lg-mobile": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }]
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .glass-effect { background: rgba(255,255,255,0.8); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md overflow-x-hidden">
+    <!-- TopAppBar -->
+    <header class="fixed top-0 w-full z-50 bg-surface shadow-sm h-16 flex items-center justify-between px-margin-mobile">
+        <a class="flex items-center gap-2" href="/">
+            <span class="material-symbols-outlined text-primary text-3xl">travel_explore</span>
+            <span class="font-display text-headline-md font-bold text-primary">Cosmos Stay</span>
+        </a>
+        <div class="flex items-center gap-4">
+            <a class="material-symbols-outlined text-on-surface-variant cursor-pointer" href="/Catalog">search</a>
+            @if (isAuth)
+            {
+                if (isOwner)
+                {
+                    <a class="material-symbols-outlined text-on-surface-variant" title="Panel propietario" href="/Owner">dashboard</a>
+                }
+                <a class="w-8 h-8 rounded-full bg-primary-fixed-dim flex items-center justify-center border border-outline-variant text-primary" href="/Account/Profile" title="Mi perfil">
+                    <span class="material-symbols-outlined text-xl">person</span>
+                </a>
+            }
+            else
+            {
+                <a class="text-secondary font-label-md font-bold" href="/Account/Login">Ingresar</a>
+            }
+        </div>
+    </header>
+
+    <main class="pt-16 pb-24">
+        @RenderBody()
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-on-background text-white pt-12 pb-28 px-margin-mobile">
+        <div class="flex flex-col gap-8">
+            <div>
+                <div class="flex items-center gap-2 mb-4">
+                    <span class="material-symbols-outlined text-secondary-fixed text-3xl">travel_explore</span>
+                    <span class="font-display text-headline-md font-bold">Cosmos Stay</span>
+                </div>
+                <p class="text-white/60 text-body-md max-w-xs">Redefiniendo las rentas premium con tecnología y confianza.</p>
+            </div>
+            <div class="pt-8 border-t border-white/10 flex flex-col gap-2 items-center">
+                <p class="text-white/40 text-label-md">© @DateTime.UtcNow.Year Cosmos Stay Inc.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- BottomNavBar -->
+    <nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-16 bg-surface shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)] rounded-t-xl">
+        <a class="flex flex-col items-center justify-center transition-transform active:scale-95 @Active("Catalog")" href="/Catalog">
+            <span class="material-symbols-outlined">search</span>
+            <span class="text-label-md">Explorar</span>
+        </a>
+        <a class="flex flex-col items-center justify-center transition-transform active:scale-95 @Active("Favorites")" href="/Favorites">
+            <span class="material-symbols-outlined">favorite</span>
+            <span class="text-label-md">Favoritos</span>
+        </a>
+        <a class="flex flex-col items-center justify-center transition-transform active:scale-95 @Active("Bookings")" href="/Bookings">
+            <span class="material-symbols-outlined">travel_explore</span>
+            <span class="text-label-md">Reservas</span>
+        </a>
+        <a class="flex flex-col items-center justify-center transition-transform active:scale-95 @Active("Account")" href="@(isAuth ? "/Account/Profile" : "/Account/Login")">
+            <span class="material-symbols-outlined">person</span>
+            <span class="text-label-md">Perfil</span>
+        </a>
+    </nav>
+
+    <script>
+        const header = document.querySelector('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 20) {
+                header.classList.add('shadow-md', 'glass-effect');
+                header.classList.remove('shadow-sm', 'bg-surface');
+            } else {
+                header.classList.remove('shadow-md', 'glass-effect');
+                header.classList.add('shadow-sm', 'bg-surface');
+            }
+        });
+    </script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

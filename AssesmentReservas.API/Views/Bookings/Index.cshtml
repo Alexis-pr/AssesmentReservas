@@ -1,0 +1,74 @@
+@model IReadOnlyList<BookingDto>
+@{
+    ViewData["Title"] = "Mis reservas";
+    string Badge(string s) => s switch
+    {
+        "Confirmed" => "bg-primary-container/30 text-primary",
+        "Completed" => "bg-surface-container-high text-on-surface-variant",
+        "Cancelled" => "bg-error-container/40 text-error",
+        _ => "bg-secondary-container/30 text-secondary"
+    };
+    string Label(string s) => s switch
+    {
+        "Confirmed" => "Confirmada",
+        "Completed" => "Completada",
+        "Cancelled" => "Cancelada",
+        "Pending" => "Pendiente",
+        _ => s
+    };
+}
+
+<section class="px-margin-mobile py-8 max-w-md mx-auto">
+    <h1 class="font-display text-headline-md text-primary mb-6">Mis reservas</h1>
+
+    @if (TempData["Success"] != null)
+    {
+        <div class="bg-primary-container/30 text-primary rounded-lg p-3 mb-4 text-body-md flex items-center gap-2">
+            <span class="material-symbols-outlined text-[18px]">check_circle</span> @TempData["Success"]
+        </div>
+    }
+    @if (TempData["Error"] != null)
+    {
+        <div class="bg-error-container/40 text-error rounded-lg p-3 mb-4 text-body-md">@TempData["Error"]</div>
+    }
+
+    @if (Model.Count == 0)
+    {
+        <div class="bg-surface-container rounded-2xl p-10 text-center text-on-surface-variant">
+            <span class="material-symbols-outlined text-5xl text-primary/40">luggage</span>
+            <p class="mt-3">Aún no tienes reservas.</p>
+            <a href="/Catalog" class="inline-block mt-4 text-secondary font-semibold">Explorar propiedades</a>
+        </div>
+    }
+    else
+    {
+        <div class="space-y-4">
+            @foreach (var b in Model)
+            {
+                <div class="bg-surface-container-lowest border border-outline-variant rounded-2xl p-5 shadow-sm">
+                    <div class="flex justify-between items-start mb-3">
+                        <h3 class="font-title-lg text-on-surface">@b.PropertyTitle</h3>
+                        <span class="px-3 py-1 rounded-full text-label-md @Badge(b.Status)">@Label(b.Status)</span>
+                    </div>
+                    <div class="grid grid-cols-2 gap-3 text-body-md text-on-surface-variant mb-3">
+                        <div class="flex items-center gap-2"><span class="material-symbols-outlined text-[18px] text-primary">login</span>@b.CheckInDateTime.ToString("yyyy-MM-dd") · 14:00</div>
+                        <div class="flex items-center gap-2"><span class="material-symbols-outlined text-[18px] text-error">logout</span>@b.CheckOutDateTime.ToString("yyyy-MM-dd") · 12:00</div>
+                    </div>
+                    <div class="flex justify-between items-center pt-3 border-t border-outline-variant">
+                        <span class="text-on-surface-variant text-label-md">@b.Nights noches</span>
+                        <span class="font-bold text-primary text-title-lg">@b.TotalPrice.Cop()</span>
+                    </div>
+                    @if (b.Status == "Confirmed" || b.Status == "Pending")
+                    {
+                        <form asp-action="Cancel" asp-route-id="@b.Id" method="post" class="mt-4"
+                              onsubmit="return confirm('¿Cancelar esta reserva?');">
+                            <button type="submit" class="w-full py-2.5 border border-error text-error rounded-lg font-semibold text-label-md hover:bg-error-container/20 transition-colors">
+                                Cancelar reserva
+                            </button>
+                        </form>
+                    }
+                </div>
+            }
+        </div>
+    }
+</section>

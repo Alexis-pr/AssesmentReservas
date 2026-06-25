@@ -1,0 +1,11 @@
+**/bin/
+**/obj/
+**/.vs/
+**/.idea/
+**/*.user
+**/.idea/
+logs/
+Dockerfile
+.dockerignore
+README.md
+Claude.md

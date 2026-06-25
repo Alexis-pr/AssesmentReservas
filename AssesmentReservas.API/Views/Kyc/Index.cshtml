@@ -1,0 +1,96 @@
+@model KycPageViewModel
+@{
+    ViewData["Title"] = "Validación de identidad";
+    var verified = Model.Status.IsKycVerified;
+}
+
+<main class="pt-4 pb-10 px-margin-mobile max-w-md mx-auto w-full">
+    <div class="text-center space-y-2 mb-8">
+        <h1 class="font-display text-headline-md text-on-background">Validación de identidad</h1>
+        <p class="text-on-surface-variant text-body-md">Para garantizar la seguridad en Cosmos Stay, confirmamos tu identidad con tu documento oficial.</p>
+    </div>
+
+    @if (verified)
+    {
+        <div class="flex items-center gap-3 p-5 bg-surface-container-high border border-primary-container rounded-xl">
+            <div class="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-on-primary">
+                <span class="material-symbols-outlined">verified</span>
+            </div>
+            <div>
+                <h3 class="font-bold text-primary">Identidad verificada</h3>
+                <p class="text-body-md text-on-surface-variant">Ya puedes realizar reservas.</p>
+            </div>
+        </div>
+        <a href="/Catalog" class="mt-6 block text-center w-full h-12 bg-primary text-on-primary rounded-xl font-semibold leading-[3rem]">Explorar propiedades</a>
+    }
+    else
+    {
+        @if (Model.Result is { } r)
+        {
+            @if (r.Status == "Approved")
+            {
+                <div class="flex items-center gap-3 p-4 bg-surface-container-high border border-primary-container rounded-xl mb-6">
+                    <span class="material-symbols-outlined text-primary">verified</span>
+                    <div><h3 class="font-bold text-primary">Aprobado</h3><p class="text-body-md text-on-surface-variant">Identidad verificada exitosamente.</p></div>
+                </div>
+                <div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-4 text-body-md space-y-1 mb-6">
+                    <div class="flex justify-between"><span class="text-on-surface-variant">Nombres</span><span class="font-semibold">@r.FirstName</span></div>
+                    <div class="flex justify-between"><span class="text-on-surface-variant">Apellidos</span><span class="font-semibold">@r.LastName</span></div>
+                    <div class="flex justify-between"><span class="text-on-surface-variant">Documento</span><span class="font-semibold">@r.DocumentNumber</span></div>
+                    <div class="flex justify-between"><span class="text-on-surface-variant">Nacimiento</span><span class="font-semibold">@(r.BirthDate?.ToString("yyyy-MM-dd"))</span></div>
+                </div>
+                <a href="/Catalog" class="block text-center w-full h-12 bg-primary text-on-primary rounded-xl font-semibold leading-[3rem]">Continuar a reservar</a>
+            }
+            else
+            {
+                <div class="flex items-start gap-3 p-4 bg-error-container border border-error rounded-xl mb-6">
+                    <span class="material-symbols-outlined text-error">warning</span>
+                    <div><h3 class="font-bold text-error">Rechazado</h3><p class="text-body-md text-on-surface-variant">@r.RejectionReason</p></div>
+                </div>
+            }
+        }
+
+        <div asp-validation-summary="All" class="text-error text-label-md bg-error-container/30 rounded-lg p-3 mb-4 [&:empty]:hidden"></div>
+
+        @if (Model.Result is null || Model.Result.Status != "Approved")
+        {
+            <div class="bg-surface-container-low border border-outline-variant rounded-xl p-5 space-y-4 mb-6">
+                <div class="flex items-start gap-4">
+                    <div class="p-2 bg-primary-fixed rounded-lg"><span class="material-symbols-outlined text-primary">lightbulb</span></div>
+                    <div><h3 class="font-semibold text-primary">Buena iluminación</h3><p class="text-on-surface-variant text-body-md">Evita reflejos y sombras sobre el documento.</p></div>
+                </div>
+                <div class="flex items-start gap-4">
+                    <div class="p-2 bg-primary-fixed rounded-lg"><span class="material-symbols-outlined text-primary">crop_free</span></div>
+                    <div><h3 class="font-semibold text-primary">Enfoque claro</h3><p class="text-on-surface-variant text-body-md">Que todos los datos sean legibles y el documento esté completo.</p></div>
+                </div>
+            </div>
+
+            <form asp-action="Upload" method="post" enctype="multipart/form-data" class="space-y-4" id="kyc-form">
+                <label class="relative cursor-pointer overflow-hidden rounded-xl border-2 border-dashed border-outline hover:border-primary transition-colors bg-surface-bright aspect-[3/2] flex flex-col items-center justify-center gap-2">
+                    <span class="material-symbols-outlined text-outline text-4xl">add_a_photo</span>
+                    <p class="font-semibold text-outline" id="file-label">Subir documento (frente)</p>
+                    <input type="file" name="file" accept="image/*" capture="environment" class="hidden" id="kyc-file" required />
+                </label>
+                <button type="submit" class="w-full h-12 bg-primary text-on-primary rounded-xl font-semibold shadow-lg active:scale-95 transition-transform flex items-center justify-center gap-2">
+                    <span class="material-symbols-outlined">cloud_upload</span> Validar identidad
+                </button>
+                <p class="text-label-md text-on-surface-variant text-center flex items-center justify-center gap-1">
+                    <span class="material-symbols-outlined text-[16px]">lock</span>
+                    Tu documento se cifra y se elimina tras la validación.
+                </p>
+            </form>
+        }
+    }
+</main>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        const input = document.getElementById('kyc-file');
+        if (input) {
+            input.addEventListener('change', () => {
+                if (input.files.length) document.getElementById('file-label').innerText = input.files[0].name;
+            });
+        }
+    </script>
+}
