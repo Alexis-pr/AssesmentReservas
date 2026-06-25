@@ -50,7 +50,7 @@ services:
 
   api:
     build:
-      context: ./AssesmentReservas.API
+      context: .
       dockerfile: Dockerfile
     depends_on:
       postgres:
