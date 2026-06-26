@@ -23,14 +23,33 @@ public static partial class KycDocumentParser
         var text = rawText.ToUpperInvariant();
         var lines = text.Split(['\n', '\r'], StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries);
 
+        var firstName = ValueAfterLabel(lines, "NOMBRES");
+        var lastName  = ValueAfterLabel(lines, "APELLIDOS");
+
+        // Fallback: si no hay etiquetas (OCR ruidoso), tomar las primeras líneas que parezcan nombres.
+        if (firstName is null && lastName is null)
+        {
+            var nameLines = lines
+                .Where(l => LooksLikeName(l.Trim('.', ',', '-', '|', '/', '\\', '_', '*')))
+                .Take(2)
+                .ToList();
+            if (nameLines.Count >= 1) lastName  = Titleize(nameLines[0].Trim('.', ',', '-', '|', '/', '\\', '_', '*'));
+            if (nameLines.Count >= 2) firstName = Titleize(nameLines[1].Trim('.', ',', '-', '|', '/', '\\', '_', '*'));
+        }
+
         return new KycExtraction(
-            FirstName: ValueAfterLabel(lines, "NOMBRES"),
-            LastName: ValueAfterLabel(lines, "APELLIDOS"),
+            FirstName: firstName,
+            LastName: lastName,
             DocumentNumber: ExtractDocumentNumber(text),
             BirthDate: ExtractBirthDate(text));
     }
 
-    /// <summary>Devuelve la línea siguiente (o el resto de la misma) a una etiqueta dada.</summary>
+    /// <summary>
+    /// Devuelve el valor asociado a una etiqueta buscando:
+    /// 1. El resto de la misma línea tras el label.
+    /// 2. La línea siguiente (layout estándar: label → valor).
+    /// 3. La línea anterior (cédulas antiguas donde el valor precede al label).
+    /// </summary>
     private static string? ValueAfterLabel(string[] lines, string label)
     {
         for (var i = 0; i < lines.Length; i++)
@@ -44,12 +63,20 @@ public static partial class KycDocumentParser
 
             if (i + 1 < lines.Length && LooksLikeName(lines[i + 1]))
                 return Titleize(lines[i + 1]);
+
+            // Cédulas antiguas: el valor aparece en la línea ANTERIOR al label.
+            if (i > 0 && LooksLikeName(lines[i - 1]))
+                return Titleize(lines[i - 1]);
         }
         return null;
     }
 
-    private static bool LooksLikeName(string s) =>
-        s.Length is >= 2 and <= 60 && NameRegex().IsMatch(s);
+    private static bool LooksLikeName(string s)
+    {
+        // Limpia ruido OCR antes de validar: puntos, comas, guiones al inicio/fin.
+        var clean = s.Trim('.', ',', '-', '|', '/', '\\', '_', '*');
+        return clean.Length is >= 2 and <= 60 && NameRegex().IsMatch(clean);
+    }
 
     private static string? ExtractDocumentNumber(string text)
     {
@@ -110,7 +137,8 @@ public static partial class KycDocumentParser
         return CultureInfo.GetCultureInfo("es-CO").TextInfo.ToTitleCase(clean.ToLowerInvariant());
     }
 
-    [GeneratedRegex(@"^[A-ZÁÉÍÓÚÑ][A-ZÁÉÍÓÚÑ\s]+$")]
+    // Permite letras mayúsculas con acento, espacios y guiones (nombres compuestos / ruido OCR mínimo).
+    [GeneratedRegex(@"^[A-ZÁÉÍÓÚÑ][A-ZÁÉÍÓÚÑ\s\-]+$")]
     private static partial Regex NameRegex();
 
     [GeneratedRegex(@"\d{1,3}(?:[.\s]\d{3}){2,3}|\d{7,11}")]

@@ -167,15 +167,13 @@ public class KycService : IKycService
         if (string.IsNullOrWhiteSpace(e.DocumentNumber))
             return (KycStatus.Rejected, "No se pudo leer el número de documento.");
 
-        if (string.IsNullOrWhiteSpace(e.FirstName) && string.IsNullOrWhiteSpace(e.LastName))
-            return (KycStatus.Rejected, "No se pudieron leer los nombres del documento.");
-
-        if (e.BirthDate is null)
-            return (KycStatus.Rejected, "No se pudo leer la fecha de nacimiento.");
-
-        var age = AgeOn(e.BirthDate.Value, DateOnly.FromDateTime(DateTime.UtcNow));
-        if (age < _settings.MinimumAge)
-            return (KycStatus.Rejected, $"El titular debe ser mayor de {_settings.MinimumAge} años.");
+        // La fecha de nacimiento puede estar en el reverso; si no se detectó, se omite el chequeo de edad.
+        if (e.BirthDate is not null)
+        {
+            var age = AgeOn(e.BirthDate.Value, DateOnly.FromDateTime(DateTime.UtcNow));
+            if (age < _settings.MinimumAge)
+                return (KycStatus.Rejected, $"El titular debe ser mayor de {_settings.MinimumAge} años.");
+        }
 
         return (KycStatus.Approved, null);
     }

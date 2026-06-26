@@ -136,4 +136,4 @@ Login: serilog
 Notificaciones: reportarlo por mailkit y manual por app
 reportes en excel: closedxml
 
-IA: falta por definir
+IA: falta por definir 
